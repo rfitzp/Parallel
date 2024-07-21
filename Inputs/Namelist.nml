@@ -1,0 +1,17 @@
+&PARALLEL_CONTROL
+ MUE     = 0.5
+ LAMBDAD = 1.e-2
+ SIGMA   = 1.e-2
+
+ XMAX    = 1.
+ NX      = 1000
+
+ GMAX    = 200.
+ NG      = 1000
+
+ TMAX    = 1.
+ NT      = 500
+
+ GAMMA   = 0.1
+ KSMAX   = 4.
+/

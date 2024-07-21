@@ -1,0 +1,519 @@
+\documentclass[12pt,prb,aps]{revtex4-1}
+\usepackage {amsmath}
+\usepackage{amssymb}
+\pdfoutput = 1 
+\usepackage {graphicx}
+\newcommand{\bomega}{\mbox{\boldmath$\omega$}}
+\allowdisplaybreaks
+
+\begin{document}
+
+\title{Time-Dependent Parallel Electron Particle and Energy Transport in  a Magnetized Plasma of Arbitrary Collisonality}
+\author{T.~Wang and R.~Fitzpatrick\,\footnote{rfitzp@utexas.edu}}
+\affiliation{Institute for Fusion Studies,  Department of Physics,  University of Texas at Austin,  Austin TX 78712, USA}
+\maketitle
+
+\section{Introduction}
+In Ref.~\onlinecite{haz},  the steady-state transport of electron number density and energy parallel to the magnetic field
+of a magnetized, weakly-coupled, electron-ion plasma of arbitrary collisionality was investigated  in slab geometry   by solving a simplified one-dimensional kinetic equation for the electron distribution function that employed a Bhatnagar-Gross-Krook (BGK)  electron-electron collision
+operator.\cite{krook}  The resulting model was able to successfully reproduce standard results for the the electron heat flux in both the short mean-free-path and
+the long mean-free-path limits. In the short mean-free-path limit, electron energy transport was found to be local and diffusive in nature, whereas the transport was found to be non-local and convective in the
+long mean-free-path limit. Somewhat surprisingly, electron particle transport was found to be local and diffusive at all collisionalities. 
+The aim of this paper is to generalize the analysis of Ref.~\onlinecite{haz} by  incorporating a model electron-ion collision operator,
+ including a self-consistent calculation of the parallel electric field, and taking time depedence into account.
+
+\section{Basic Model}
+
+\subsection{Electron Distribution Function}
+Let $f_e(t,{\bf x},{\bf v})$ be the ensemble-averaged electron distribution function. Here, $t$ denotes time, ${\bf x}=(x_1,\, x_2,\, x_3)$
+is a position vector,  $x_1$, $x_2$, $x_3$ are Cartesian coordinates that are defined such that the 
+$x_3$-axis is parallel to the local equilibrium magnetic field, and ${\bf v}$ is the electron velocity. 
+Let us write
+\begin{equation}\label{e22}
+f_e(t,{\bf x},{\bf v})= n_e\,F(v_1)\,F(v_2)\left[F(v_3)+ f (t,x_3,v_3)\right],
+\end{equation}
+where 
+\begin{equation}
+F(v) = \frac{\exp(-v^2/v_{t\,e}^{\,2})}{\pi^{1/2}\,v_{t\,e}},
+\end{equation}
+and 
+$|f/F|\ll 1$. Here,  $n_e$ is the unperturbed electron number density, 
+\begin{equation}
+v_{t\,e} = \sqrt{\frac{2\,T_e}{m_e}}
+\end{equation}
+the electron thermal velocity, $m_e$  the electron mass,  and $T_e$ the unperturbed electron temperature (measured in energy units). Note that we are assuming that the electron distribution function remains relatively close to a Maxwellian distribution. 
+
+\subsection{Electron-Electron Collision Operator}\label{see}
+The electron-electron collision operator is modeled as a BGK operator:\,\cite{haz,krook}
+\begin{align}
+C_{ee}(f_e) &= -\nu_{ee}\,F(v_1)\,F(v_2)\,\biggr\{n_e\,F(v_3)+n_e\,f(t,x_3,v_3)\phantom{\frac{a}{b}}\nonumber\\[0.5ex]
+&\phantom{=}\left.- \frac{[n_e+\delta n_e(t,x_3)]\,m_e^{\,1/2}}{\pi^{1/2}\,(2\,[T_e+\delta T_e(t,x_3)])^{1/2}}\,\exp\left[-\frac{[v_3-V_e(t,x_3)]^{2}\,m_e}{2\,[T_e+\delta T_e(t,x_3)]}\right]\right\}.
+\end{align}
+Here, $\nu_{ee}$ is the electron-electron collision frequency. Moreover, $|\delta n_e/n_e|\ll 1$, $|V_e/v_3|\ll 1$,  and $|\delta T_e/T_e|\ll 1$. It can be seen that the operator acts to relax the distribution function to the 
+perturbed Maxwellian
+\begin{equation}
+F(v_1)\,F(v_2)\,\frac{[n_e+\delta n_e(t,x_3)]\,m_e^{\,1/2}}{\pi^{1/2}\,(2\,[T_e+\delta T_e(t,x_3)])^{1/2}}\,\exp\left[-\frac{[v_3-V_3(t,x_3)]^{2}\,m_e}{2\,[T_e+\delta T_e(t,x_3)]}\right].
+\end{equation}
+Note that we are working in an assumed common electron-ion rest frame.
+Expanding the collision operator, and only retaining terms that are first order in perturbed quantities, we obtain
+\begin{align}\label{e24}
+C_{ee}(f_e) &=- \nu_{ee}\,n_e\,F(v_1)\,F(v_2)\,\left\{ f(t,x_3,v_3) - \left[\frac{\delta n_e(t,x_3)}{n_e} +\frac{V_e(t,x_3)}{v_{t\,e}} \,\frac{2\,v_3}{v_{t\,e}}\right.\right.\nonumber\\[0.5ex]
+&\phantom{=}\left.\left.+\frac{\delta T_e(t,x_3)}{T_e}\left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right)\right]F(v_3)\right\}.
+\end{align}
+
+Now, in order for the electron-electron collision operator to conserve the number of electrons, we require that
+\begin{equation}
+\int\!\!\int\!\!\int C_{ee}(f_e) \,d^3{\bf v} = 0,
+\end{equation}
+which yields
+\begin{equation}\label{dne}
+\frac{\delta n_e(t,x_3)}{n_e} =\int_{-\infty}^\infty f(t,x_3,v_3)\,dv_3.
+\end{equation}
+Here, $\delta n_e$ is the perturbed electron number density. 
+
+Likewise, in order for the electron-electron collision operator to conserve electron momentum, we need
+\begin{equation}\label{e27}
+\int\!\!\int\!\!\int {\bf v}\,C_{ee}(f_e)\, d^3{\bf v}= 0.
+\end{equation}
+It is easily seen that 
+$\int\!\!\int\!\!\int v_1\,C_{ee}(f_e)\,d^3{\bf v} =\int\!\!\int\!\!\int v_2\,C_{ee}(f_e)\,d^3{\bf v} = 0$.
+Thus, we require 
+\begin{equation}\label{eyy}
+\int\!\!\int\!\!\int v_3\,C_{ee}(f_e)\, d^3{\bf v} = 0,
+\end{equation}
+which yields
+\begin{equation}\label{e29}
+ V_e(t,x_3) = \int_{-\infty}^\infty v_3\,f(t,x_3,v_3)\,dv_3.
+\end{equation}
+Here, $V_e$ is the perturbed parallel drift velocity of the electrons with respect to the ions.
+
+Finally, in order for the electron-electron collision operator to conserve electron energy, we require
+\begin{equation}\label{e20}
+\int\!\!\int\!\!\int v^2\,C_{ee}(f_e)\, d^3{\bf v} = 0.
+\end{equation}
+It is easily seen that 
+$\int\!\!\int\!\!\int v_1^{\,2}\,C_{ee}(f_e) \,d^3{\bf v} = \int\!\!\int\!\!\int v_2^{\,2}\,C_{ee}(f_e)\,d^3{\bf v} =0$.
+Thus, we need 
+\begin{equation}\label{e36s}
+\int\!\!\int\!\!\int v_3^{\,2}\,C_{ee}(f_e) \,d^3{\bf v} = 0,
+\end{equation}
+which yields
+\begin{equation}\label{dte}
+\frac{\delta T_e(t,x_3)}{T_e} = 2\,\int_{-\infty}^\infty \left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right) f(t,x_3,v_3)\,dv_3.
+\end{equation}
+Here, $\delta T_e$ is the perturbed electron temperature.
+Thus, the electron-electron collision operator, (\ref{e24}), is now fully specified in terms of the perturbed electron distribution function,
+$f(t,x_3,v_3)$. 
+
+\subsection{Electron-Ion Collision Operator}
+By analogy with the analysis in the previous subsection, our model electron-ion collision operator is written
+\begin{align}
+C_{ei}(f_e) &=- \nu_{ei}\,n_e\,F(v_1)\,F(v_2)\,\biggr\{ f(t,x_3,v_3) \nonumber\\[0.5ex]&\phantom{=}\left.- \left[\frac{\delta n_e(t,x_3)}{n_e} +\frac{\delta T_e(t,x_3)}{T_e}\,\left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right)\right]F(v_3)\right\},
+\end{align}
+where $\nu_{ei}$ is the electron-ion collision frequency. Note that this collision operator conserves the number of electrons, as well as the electron energy (because the ions are treated as
+infinitely massive with respect to the electrons), but does not conserve electron momentum (as a consequence of momentum transferred to the ions via collisions). Note, finally, that the
+ion fluid is stationary in the infinite mass limit. 
+
+\subsection{Electron Kinetic Equation}
+The  ensemble-averaged electron kinetic equation that governs the transport of electron number density
+and energy parallel to the magnetic field can be written\,\cite{haz,rf0}
+\begin{equation}
+\frac{\partial f_e}{\partial t}+v_3\,\frac{\partial f_e}{\partial x_3} -\frac{e}{m_e}\,E_3\,\frac{\partial f_e}{\partial v_3} = C_{ei}(f_e) + C_{ee}(f_e) + S({\bf x},{\bf v}).
+\end{equation}
+Here, we are assuming that the plasma is subject to a perturbed parallel electric
+field, $E_3(t,x_3)$. Moreover, the source term in the kinetic equation takes the form 
+\begin{equation}
+S(t,{\bf x},{\bf v}) = n_e\,F(v_1)\,F(v_2)\,F(v_3)\left[S_0(t,x_3) +S_2(t,x_3)\left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right) \right],
+\end{equation}
+where $S_0(t,x_3)$ represents a particle source, and $S_2(t,x_3)$ represents an energy source. 
+
+Linearizing the kinetic equation, and integrating over $v_1$ and $v_2$, we obtain
+\begin{equation}\label{e40}
+\frac{\partial f}{\partial t}+v_3\,\frac{\partial f}{\partial x_3} - \langle C_{ei}( f)\rangle- \langle C_{ee}(f)\rangle = \left[
+S_0 +S_1\,\frac{2\,v_3}{v_{t\,e}} +S_2 \left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right)\right]F(v_3),
+\end{equation}
+where
+\begin{align}\label{cee}
+\langle C_{ee}(f)\rangle&= \frac{1}{n_e}\int_{-\infty}^\infty\!\int_{-\infty}^\infty C_{ee}(f_e)\,dv_1\,dv_2\nonumber\\[0.5ex]&= -\nu_{ee}\left\{f-\left[\frac{\delta n_e}{n_e}+\frac{ V_e}{v_{t\,e}}\,\frac{2\,v_3}{v_{t\,e}}
++\frac{\delta T_e}{T_e}\left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right)\right]F(v_3)\right\},\\[0.5ex]
+\langle C_{ei}(f)\rangle&= \frac{1}{n_e}\int_{-\infty}^\infty\!\int_{-\infty}^\infty C_{ei}(f_e)\,dv_1\,dv_2\nonumber\\[0.5ex]&=-\nu_{ei}\left\{f-\left[\frac{\delta n_e}{n_e}
++\frac{\delta T_e}{T_e}\left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right)\right]F(v_3)\right\},\label{cei}\\[0.5ex]
+S_1(t,x_3) &= - \frac{e\, E_3(t,x_3)}{m_e\,v_{t\,e}}.\label{s1}
+\end{align}
+
+\subsection{Poisson-Maxwell Equation}
+Assuming that the ions constitute a uniform neutralizing background, the perturbed parallel electric field is related to the perturbed electron number
+density according to
+\begin{equation}\label{pois}
+\frac{\partial  E_3}{\partial x_3}=-\frac{e\,\delta n_e(t,x_3)}{\epsilon_0}.
+\end{equation}
+
+\subsection{Heat Flux}
+The flux of parallel electron kinetic energy is defined\,\cite{rf0}
+\begin{equation}
+{\bf q}_\parallel(t,{\bf x}) =  \int\!\int\!\int \frac{1}{2}\,m_e\,(v_3-V_e)^2\,({\bf v}-{\bf V})\,f_e(t,{\bf x},{\bf v})\,d^3{\bf v}.
+\end{equation}
+It is easily demonstrated that, to first order in small quantities, $q_{\parallel\,1}=q_{\parallel\,2}=0$, and
+\begin{equation}\label{q3}
+q_{\parallel\,3}(t,x_3) = \frac{1}{2}\,m_e\,n_e\int_{-\infty}^\infty v_3\left(v_3^{\,2}
+-\frac{3}{2}\,v_{t\,e}^{\,2}\right)f(t,x_3,v_3)\,dv_3.
+\end{equation}
+
+\section{Fourier-Laplace Transform Solution of Electron Kinetic Equation}
+\subsection{Normalization}
+Let
+\begin{align}
+\nu_e= \nu_{ee}+\nu_{ei}
+\end{align}
+be the total electron collision frequency, and
+let
+\begin{equation}
+l_e= \frac{v_{t\,e}}{\nu_e}
+\end{equation}
+be the mean-free-path between collisions. 
+Let us adopt the following normalizations: 
+$\hat{t} = \nu_{e}\,t$,
+$\hat{x}= x_3/l_e$,
+$u = v_3/v_{t\,e}$,
+$\hat{f}= v_{t\,e}\,f$,
+$\delta\hat{n}_e= \delta n_e/n_e$,
+$\hat{V}_e= V_e/v_{t\,e}$,
+$\delta\hat{T}_e= \delta T_e/T_e$,
+$\hat{S}_0 = S_0/\nu_{e}$,
+$\hat{S}_1 = S_1/\nu_{e}$,
+$\hat{S}_2= S_2/\nu_{e}$, and
+$\hat{q}_e=q_{\parallel\,3}/(n_e\,T_e\,v_{t\,e})$.
+ 
+The electron kinetic equation, (\ref{e40}), takes the normalized form
+\begin{align}\label{e37a}
+\frac{\partial\hat{f}}{\partial \hat{t}}+u\,\frac{\partial\hat{f}}{\partial\hat{x}} + \hat{f}
+= \left[(\delta\hat{n}_e+\hat{S}_0)+(\mu_e\,\hat{V}_e+\hat{S}_1)\,2\,u+(\delta\hat{T}_e+\hat{S}_2)\left(u^2-\frac{1}{2}\right)\right] F_M,
+\end{align}
+where
+\begin{align}
+F_M(u) &=\frac{\exp(-u^2)}{\pi^{1/2}},\\[0.5ex]
+\mu_e&= \frac{\nu_{ee}}{\nu_{ee}+\nu_{ei}}.
+\end{align}
+Here, use has been made of Eqs.~(\ref{cee}) and (\ref{cei}). Furthermore, Eqs.~(\ref{dne}), (\ref{e29}), (\ref{dte}), and (\ref{q3}) yield
+\begin{align}\label{e28}
+\delta\hat{n}_e(\hat{t},\hat{x})&=\int_{-\infty}^\infty \hat{f}(\hat{t},\hat{x},u)\,du,\\[0.5ex]
+\hat{V}_e(\hat{t},\hat{x})&= \int_{-\infty}^\infty u\,\hat{f}(\hat{t},\hat{x},u)\,du,\\[0.5ex]
+\delta\hat{T}_e(\hat{t},\hat{x})&= 2\int_{-\infty}^\infty \left(u^2-\frac{1}{2}\right)f(\hat{t},\hat{x},u)\,du,\label{e30}\\[0.5ex]
+\hat{q}_e(\hat{t},\hat{x})&= \int_{-\infty}^\infty u\left(u^2-\frac{3}{2}\right)\hat{f}(\hat{t},\hat{x},u)\,du.
+\end{align}
+Finally, Eqs.~(\ref{s1}) and (\ref{pois}) give
+\begin{equation}\label{e44a}
+2\,\hat{\lambda}_D^{\,2}\,\frac{\partial\hat{S}_1}{\partial \hat{x}} = \delta\hat{n}_e,
+\end{equation}
+where
+\begin{equation}
+\hat{\lambda}_D = \frac{\lambda_D}{l_e}
+\end{equation}
+and
+\begin{equation}
+\lambda_D = \left(\frac{\epsilon_0\,T_e}{n_e\,e^2}\right)^{1/2}
+\end{equation}
+is the Deybe length.\cite{rf0} Note that $\hat{\lambda}_D$ is necessarily a small parameter in a weakly-coupled plasma.\cite{rf0}
+
+\subsection{Fluid Equations}
+Taking $\int_{-\infty}^\infty (\ref{e37a})\,du$, we obtain the electron continuity equation,
+\begin{equation}\label{econt}
+\frac{\partial\delta\hat{n}_e}{\partial\hat{t}}+\frac{\partial\hat{V}_e}{\partial\hat{x}} = \hat{S}_0.
+\end{equation}
+Taking $\int_{-\infty}^\infty u\,(\ref{e37a})\,du$, we obtain the electron momentum conservation equation, 
+\begin{equation}\label{eforce}
+\frac{\partial\hat{V}_e}{\partial\hat{t}}+\frac{1}{2}\,\frac{\partial}{\partial\hat{x}}(\delta\hat{n}_e+\delta\hat{T}_e) + (1-\mu_e)\,\hat{V}_e = \hat{S}_1.
+\end{equation}
+Finally, taking $2\,\int_{-\infty}^\infty (u^2-1/2)\,(\ref{e37a})\,du$, we obtain
+ the electron  energy conservation equation,
+\begin{equation}\label{eenergy}
+\frac{\partial\delta T_e}{\partial\hat{t}} +2\,\frac{\partial}{\partial\hat{x}}(\hat{V}_e+\hat{q}_e)= \hat{S}_2.
+\end{equation}
+
+
+\subsection{Fourier-Laplace Transformation}
+Let
+\begin{align}
+\bar{f}(g,\hat{k},u) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\left(\int_0^\infty \hat{f}(\hat{t},\hat{x},u)\,{\rm e}^{-g\,\hat{t}}\,d\hat{t}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x},\\[0.5ex]
+\delta\bar{n}_e(g,\hat{k}) &=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty\left(\int_0^\infty \delta \hat{n}_e(\hat{t},\hat{x})\,{\rm e}^{-g\,\hat{t}}\,d\hat{t}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x},
+\label{e41x}
+\end{align}
+et cetera.
+Here,
+$\hat{k}= k\,l_e$,
+where $k$ is the unormalized wavenumber.
+If we operate on Eqs.~(\ref{e37a}) and (\ref{e44a}) with $\int_{-\infty}^\infty\int_0^\infty[(\cdots)\,{\rm e}^{-g\,\hat{t}}\,d\hat{t}]\,{\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x}$, 
+and combine the
+resulting equations, then we obtain
+\begin{align}\label{e55x}
+(g+{\rm i}\,\hat{k}\,u+1)\,\bar{f}&= \left[(\delta\bar{n}_e+\bar{S}_0)+\left(\mu_e\,\bar{V}_e+\frac{\delta\bar{n}_e}{2\,{\rm i}\,\hat{k}\,\hat{\lambda}_D^{\,2}}\right)2\,u+(\delta\bar{T}_e+\bar{S}_2)\left(u^2-\frac{1}{2}\right)\right] F_M.
+\end{align}
+Here, we are assuming that all perturbed quantities are zero for $\hat{t}<0$. 
+
+\subsection{Fourier-Laplace Transformed Fluid Equations}
+Taking $\int_{-\infty}^\infty (\ref{e55x})\,du$, we obtain the Fourier-Laplace transformed electron continuity equation,
+\begin{equation}\label{e34}
+g\,\delta\bar{n}_e+{\rm i}\,\hat{k}\,\bar{V}_e =\bar{S}_0.
+\end{equation}
+Taking $\int_{-\infty}^\infty u\,(\ref{e55x})\,du$, we obtain the Fourier-Laplace transformed electron momentum conservation equation,
+\begin{equation}\label{e35}
+(g+1-\mu_e)\,\bar{V}_e +\frac{{\rm i}\,\hat{k}}{2}\left({\mit\Lambda}_D\,\delta\bar{n}_e+\delta\bar{T}_e\right)=0,
+\end{equation}
+where
+\begin{equation}
+{\mit\Lambda}_D (\hat{k})= \frac{1+(\hat{k}\,\hat{\lambda}_D)^2}{(\hat{k}\,\hat{\lambda}_D)^2}= \frac{1+(k\,\lambda_D)^2}{(k\,\lambda_D)^2}.
+\end{equation}
+Finally, taking $2\int_{-\infty}^\infty(u^2-1/2)\,(\ref{e55x})\,du$, we obtain the Fourier-Laplace transformed electron energy conservation equation,
+\begin{equation}\label{e36}
+g\,\delta\bar{T}_e+ 2\,{\rm i}\,\hat{k}\,(\bar{V}_e+\bar{q}_e) =\bar{S}_2.
+\end{equation}
+
+\subsection{Reformulation}
+Equation~(\ref{e55x}) can be rearranged to give
+\begin{align}\label{e37}
+\bar{f}(g,\hat{k},u)&=(1+g)^{-1}\left\{\left(\delta\bar{n}_e+\bar{S}_0\right)+\left[\mu_e\,\bar{V}_e+\frac{(1+g)\,({\mit\Lambda}_D-1)\,\delta\bar{n}_e}{2\,\xi}\right]2\,u
+\right.\nonumber\\[0.5ex]
+&\phantom{=}\left.+\left(\delta\bar{T}_e+\bar{S}_2\right)\left(u^2-\frac{1}{2}\right)\right\}\left(\frac{-\xi}{u-\xi}\right)F_M,
+\end{align}
+where
+\begin{equation}
+\xi (g,\hat{k})= \frac{{\rm i}\,(1+g)}{\hat{k}}= \frac{{\rm i}\,(1+g)}{k\,l_e}.
+\end{equation}
+Likewise, the fluid equations, (\ref{e34}), (\ref{e35}), and (\ref{e36}), can be re-expressed in the forms
+\begin{align}\label{e39}
+\delta\bar{n}_e+\bar{S}_0&= (1+g)\left(\delta\bar{n}_e-\xi^{-1}\,\bar{V}_e\right),\\[0.5ex]
+\mu_e\,\bar{V}_e+\frac{(1+g)\,({\mit\Lambda}_D-1)\,\delta\bar{n}_e}{2\,\xi}&= (1+g)\left[\bar{V}_e-\frac{\xi^{-1}}{2}\,(\delta\bar{n}_e+\delta\bar{T}_e)\right],\\[0.5ex]
+\delta\bar{T}_e+\bar{S}_2&= (1+g)\left[\delta \bar{T}_e-2\,\xi^{-1}\,(\bar{V}_e+\bar{q}_e)\right].\label{e41}
+\end{align}
+It follows that
+\begin{align}\label{e42}
+\xi\left[\mu_e\,\bar{V}_e+\frac{(1+g)\,({\mit\Lambda}_D-1)\,\delta\bar{n}_e}{2\,\xi}\right]& = g\,\xi^2\,\delta\bar{n}_e-\frac{1}{2}\,(1+g)\,(\delta \bar{n}_e+\delta\bar{T}_e)
+-\xi^2\,\hat{S}_0,\\[0.5ex]
+\bar{q}_e&= (1+g)^{-1}\,\xi\left[-g\left(\delta\bar{n}_e-\frac{\delta\bar{T}_e}{2}\right)+\left(\bar{S}_0-\frac{\bar{S}_2}{2}\right)\right].\label{e43}
+\end{align}
+
+\subsection{Modified Plasma Dispersion Function}
+Let
+\begin{equation}\label{e44}
+Z_n(\xi)= \int_{-\infty}^\infty u^n\left(\frac{-\xi}{u-\xi}\right)F_M(u)\,du.
+\end{equation}
+It is easily demonstrated that 
+\begin{equation}
+Z_{n+1}= \xi\,(Z_n-I_{n}),
+\end{equation}
+where
+\begin{equation}
+I_n = \frac{1}{\pi^{1/2}}\int_{-\infty}^\infty u^n\,\exp(-u^2)\,du.
+\end{equation}
+Now, $I_0=1$, and $I_1=0$, so
+\begin{align}\label{ez1}
+Z_1 &= \xi\,(Z_0-I_0) = \xi\,Z_0-\xi,\\[0.5ex]
+Z_2&= \xi\,(Z_1-I_1) =  \xi^2\,Z_0-\xi^2.\label{ez2}
+\end{align}
+Note that 
+\begin{equation}
+Z_0(\xi)= -\xi\,\bar{Z}(\xi),
+\end{equation}
+where
+\begin{equation}
+\bar{Z}(\xi) = \frac{1}{\pi^{1/2}}\int_{-\infty}^\infty \frac{{\rm e}^{-u^2}}{u-\xi}\,du
+\end{equation}
+is related to the plasma dispersion function.\cite{rf0,fc}
+In fact, it can be shown that\,\cite{rf0}
+\begin{equation}
+\bar{Z}(\xi)= {\rm i}\,\pi^{1/2}\,w(\xi)
+\end{equation}
+for ${\rm Im}(\xi)>0$, and 
+\begin{equation}
+\bar{Z}(\xi)={\rm i}\,\pi^{1/2}\,w(\xi)-2\,{\rm i}\,\pi^{1/2}\,\exp(-\xi^2) 
+\end{equation}
+for ${\rm Im}(\xi)<0$.
+Here,
+\begin{equation}
+w(\xi)= \exp(-\xi^2)\,{\rm erfc}(-{\rm i}\,\xi)
+\end{equation}
+is a so-called Faddeeva function (alternatively known as a Kramp function),\cite{as} and 
+${\rm erfc}(z)$ is the complementary error function.\cite{as} 
+
+Now,\cite{rf0,as}
+\begin{equation}
+w(\xi)=1+\frac{2\,{\rm i}\,\xi}{\pi^{1/2}}+{\cal O}(\xi^2)
+\end{equation}
+in the limit $|\xi|\ll 1$, whereas
+\begin{equation}
+w(\xi) = \sigma\,\exp(-\xi^2)+ \frac{{\rm i}}{\pi^{1/2}}\left[\frac{1}{\xi} + \frac{1}{2\,\xi^3}+\frac{3}{4\,\xi^5}+\frac{15}{8\,\xi^7}+
+\frac{105}{16\,\xi^{9}}+{\cal O}\left(\frac{1}{\xi^{11}}\right)\right]
+\end{equation}
+in the limit $|\xi|\rightarrow\infty$. 
+Here,
+\begin{equation}
+\sigma = \left\{\begin{array}{lll} 0 &~~~~&\mbox{$\xi_i>|\xi_r|^{-1}$}\\[0.25ex]
+1 &&\mbox{$|\xi_i| < |\xi_r|^{-1}$}\\[0.25ex]
+2&& \mbox{$\xi_i< -|\xi_r|^{-1}$}
+\end{array}
+\right.,
+\end{equation}
+where $\xi=\xi_r+{\rm i}\,\xi_i$, and $\xi_r$ and $\xi_i$ are both real. 
+It follows that
+\begin{equation}\label{e63x}
+Z_0(\xi) = -{\rm i}\,\pi^{1/2}\,{\rm sgn}(\xi_i)\,\xi +2\,\xi^2+{\cal O}(\xi^3)
+\end{equation}
+in the limit $|\xi|\ll 1$, whereas 
+\begin{equation}\label{e64x}
+Z_0(\xi) =- {\rm i}\,\pi^{1/2}\,\sigma'\,\xi\,\exp(-\xi^2) + 1 + \frac{1}{2\,\xi^2}+\frac{3}{4\,\xi^4}+\frac{15}{8\,\xi^6}+\frac{105}{16\,\xi^8}+{\cal O}\left(\frac{1}{\xi^{10}}\right)
+\end{equation}
+in the limit $|\xi|\gg 1$,
+where
+\begin{equation}
+\sigma' = \left\{\begin{array}{lll} 0 &~~~~&\mbox{$|\xi_i|>|\xi_r|^{-1}$}\\[0.25ex]
+1 &&\mbox{$0<\xi_i < |\xi_r|^{-1}$}\\[0.25ex]
+-1&& \mbox{$-|\xi_r|^{-1}<\xi_i<0$}
+\end{array}
+\right..
+\end{equation}
+
+\subsection{Fourier-Laplace Transformed Electron Heat Flux}
+Equations~(\ref{e28}), (\ref{e37}), and (\ref{e44}) can be combined to give
+\begin{align}\label{e51}
+(1+g)\,\delta\bar{n}_e&=\left[(\delta\bar{n}_e+\bar{S}_0)-\frac{1}{2}\,(\delta\bar{T}_e+\bar{S}_2)\right]Z_0+\left[\mu_e\,\bar{V}_e+\frac{(1+g)\,({\mit\Lambda}_D-1)\,\delta\bar{n}_e}{2\,\xi}\right]2\,Z_1\nonumber\\[0.5ex]
+&\phantom{=}
++(\delta\bar{T}_e+\bar{S}_2)\,Z_2.
+\end{align}
+Equations~(\ref{e42}), (\ref{ez1}), (\ref{ez2}), and (\ref{e51})
+yield
+\begin{equation}\label{e54}
+\delta\bar{T}_e = \frac{[2\,\xi^2-(2\,\xi^2-1)\,Z_0]\,[\bar{S}_0-\bar{S}_2/2-g\,\delta\bar{n}_e]}{
+(\xi^2-1-g)-(\xi^2-3/2-g)\,Z_0}.
+\end{equation}
+Finally, Eqs.~(\ref{e43}) and (\ref{e54}) give\,\cite{haz}
+\begin{equation}\label{e55}
+\bar{q}_e(g,\hat{k}) = \xi\,G(\xi)\,\delta\bar{T}_e(g,\hat{k}),
+\end{equation}
+where
+\begin{equation}
+G(\xi) = \frac{(\xi^2-1)-(\xi^2-3/2)\,Z_0}{2\,\xi^2-(2\,\xi^2-1)\,Z_0}.
+\end{equation}
+Note that the electron heat flux only depends on the perturbed electron temperature, and is independent of both the
+perturbed electron number density and the electron drift velocity. 
+It follows from Eqs.~(\ref{e63x}) and (\ref{e64x}) that
+\begin{equation}
+G(\xi) =-{\rm i}\,\frac{{\rm sgn}(\xi_i)}{\pi^{1/2}\,\xi}+{\cal O}(1)
+\end{equation}
+in the limit $|\xi|\ll 1$, and 
+\begin{equation}
+G(\xi)= \frac{3}{4\,\xi^2} + \frac{3}{2\,\xi^4} + {\cal O}(\xi^{-6}) 
+\end{equation}
+in the limit $|\xi|\gg 1$. 
+
+\subsection{Fourier-Laplace Transformed Electron Fluid Quantities}
+The Fourier-Laplace transformed fluid equations, (\ref{e39})--(\ref{e41}), combined with Eq.~(\ref{e55}), yield
+\begin{align}\label{e57}
+g_1\,\delta\bar{n}_e-\xi^{-1}\,\bar{V}_e&= \frac{\bar{S}_0}{1+g},\\[0.5ex]
+-{\mit\Lambda}_D\,\delta\bar{n}_e+g_2\,\xi^{-1}\,\bar{V}_e-\delta\bar{T}_e&=0,\\[0.5ex]
+-\xi^{-1}\,\bar{V}_e-\left(G-\frac{g_1}{2}\right)\delta\bar{T}_e&= \frac{\bar{S}_2}{2\,(1+g)},\label{e59}
+\end{align}
+where
+\begin{align}
+g_1(g)&= \frac{g}{1+g},\\[0.5ex]
+g_2(g,\hat{k})&=\frac{2\,(1-\mu_e+g)\,\xi^2}{1+g}.
+\end{align}
+Finally, Eqs.~(\ref{e57})--(\ref{e59})  can be solved to give\,\cite{haz}
+\begin{align}\label{e67}
+\delta\bar{n}_e(g,\hat{k})&=  \frac{-[1+g_2\,(G-g_1/2)]\,\bar{S}_0(g,\hat{k})+\bar{S}_2(g,\hat{k})/2}{(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
+\bar{V}_e(g,\hat{k}) &=\frac{-(G-g_1/2)\,{\mit\Lambda}_D\,\xi\,\bar{S}_0(g,\hat{k})+g_1\,\xi\,\bar{S}_2(g,\hat{k})/2}{(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
+\delta\bar{T}_e(g,\hat{k})&= \frac{{\mit\Lambda}_D\,\bar{S}_0(g,\hat{k})-({\mit\Lambda}_D-g_1\,g_2)\,\bar{S}_2(g,\hat{k})/2}{(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]}.\label{e69}
+\end{align}
+The previous three equations specify the Fourier-Laplace transformed electron number density, drift velocity, and temperature
+directly in terms of the particle and energy sources. 
+
+\section{Results}
+\subsection{Model Electron Particle and Energy Sources}
+Suppose that the particle and energy sources have a Gaussian spatial dependence, with a maximum at $\hat{x}=0$, and a characteristic width $\sigma=\hat{\sigma}\,l_e$. Suppose,
+further, that the sources  
+are switched on suddenly at $\hat{t}=0$.  In other words, 
+\begin{align}
+S_0(\hat{t},\hat{x}) &= \frac{A_0}{\sqrt{2\pi}\,\hat{\sigma}}\,\exp\left(-\frac{\hat{x}^2}{2\,\hat{\sigma}^2}\right)H(\hat{t}),\\[0.5ex]
+S_2(\hat{t},\hat{x}) &= \frac{A_2}{\sqrt{2\pi}\,\hat{\sigma}}\,\exp\left(-\frac{\hat{x}^2}{2\,\hat{\sigma}^2}\right)H(\hat{t}),
+\end{align}
+where $H(\hat{t})$ is a Heaviside step function, and $A_0$ and $A_2$ are arbitrary constants. 
+Note that
+\begin{align}
+\int_{-\infty}^\infty S_0(\hat{t},\hat{x})\,d\hat{x}  & =A_0\,H(\hat{t}),\\[0.5ex]
+\int_{-\infty}^\infty S_2(\hat{t},\hat{x})\,d\hat{x}  & =A_2\,H(\hat{t}).
+\end{align}
+It follows from Eq.~(\ref{e41x}) that 
+\begin{align}
+\bar{S}_0(g,\hat{k}) = \frac{A_0}{\sqrt{2\pi}\,g}\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right],\\[0.5ex]
+\bar{S}_2(g,\hat{k}) = \frac{A_2}{\sqrt{2\pi}\,g}\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right].
+\end{align}
+Let
+\begin{align}
+K_{n,0}(g,\hat{k})&=   \frac{-1-g_2\,(G-g_1/2)}{g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
+K_{T,0}(g,\hat{k})&= \frac{{\mit\Lambda}_D}{g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
+K_{n,2}(g,\hat{k})&=   \frac{1}{2\,g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
+K_{T,2}(g,\hat{k})&= \frac{-{\mit\Lambda}_D+g_1\,g_2}{2\,g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]}.
+\end{align}
+and
+\begin{align}
+F_{n,0}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{n,0}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k},\\[0.5ex]
+F_{T,0}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{T,0}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k},\\[0.5ex]
+F_{n,2}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{n,2}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k},\\[0.5ex]
+F_{T,2}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{T,2}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k}.
+\end{align}
+Here, we have made use of the easily proved results that if $\hat{k}\rightarrow -\hat{k}$ then $\xi\rightarrow -\xi$, $Z\rightarrow-Z$, $Z_0\rightarrow Z_0$,
+$G\rightarrow G$, and ${\mit\Lambda}_D\rightarrow {\mit\Lambda}_D$.
+
+If there is a unit amplitude particle source, but no energy source, so that $A_0=1$ and $A_2=0$, then Eqs.~(\ref{e41x}), (\ref{e67}), and (\ref{e69}) yield 
+\begin{align}
+\delta\hat{n}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{n,0}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
+&\phantom{=}
+ -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{n,0}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy,\\[0.5ex]
+\delta\hat{T}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{T,0}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
+&\phantom{=}
+ -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{T,0}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy,
+\end{align}
+where $\gamma>0$.  
+Note  $\delta n_e(\hat{t},-\hat{x})=\delta n_e(\hat{t},\hat{x})$, and $\delta\hat{T}_e(\hat{t},-\hat{x})=\delta \hat{T}_e(\hat{t},\hat{x})$. Here, use has been made of the easily proved results that if $g\rightarrow g^\ast$ then $K_{n,0}\rightarrow K_{n,0}^\ast$, 
+and $K_{T,0}\rightarrow K_{T,0}^\ast$.
+  Once we have determined $\delta\hat{n}_e(\hat{t},\hat{x})$ and $\delta\hat{T}_e(\hat{t},\hat{x})$ then the
+normalized particle flux, $\hat{V}_e(\hat{t},\hat{x})$, and the normalized heat flux, $\hat{q}_e(\hat{t},\hat{x})$ can be obtained from the fluid
+equations, (\ref{econt}) and (\ref{eenergy}). 
+
+On the other hand, if there is a unit amplitude energy source, but no particle source, so that $A_0=0$ and $A_2=1$, then
+\begin{align}
+\delta\hat{n}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{n,2}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
+&\phantom{=}
+ -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{n,2}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy,\\[0.5ex]
+\delta\hat{T}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{T,2}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
+&\phantom{=}
+ -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{T,2}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy.
+\end{align}
+Here, use has been made of the easily proved results that if $g\rightarrow g^\ast$ then $K_{n,0}\rightarrow K_{n,0}^\ast$, 
+$K_{n,2}\rightarrow K_{n,2}^\ast$, 
+and $K_{T,0}\rightarrow K_{T,2}^\ast$. As before, once we have determined $\delta\hat{n}_e(\hat{t},\hat{x})$ and $\delta\hat{T}_e(\hat{t},\hat{x})$ then the
+normalized particle flux, $\hat{V}_e(\hat{t},\hat{x})$, and the normalized heat flux, $\hat{q}_e(\hat{t},\hat{x})$ can be determined from the fluid
+equations, (\ref{econt}) and (\ref{eenergy}). 
+
+\section*{Acknowledgements}
+This research was directly funded by the U.S.\ Department of Energy, Office of Science, Office of Fusion Energy Sciences, under  contract DE-SC0021156. 
+
+\section*{Data Availability Statement}
+The digital data used in the figures in this paper can be obtained from the author upon reasonable request.
+
+\section*{References}
+\begin{thebibliography}{99}\baselineskip 5ex
+
+\bibitem{haz} R.D.~Hazeltine, Phys.\ Plasmas {\bf 5}, 3282 (1998).
+
+\bibitem{krook} P.L.~Bhatnagar, E.P.~Gross, and M.~Krook, Phys.\ Rev.\ {\bf 94}, 511 (1954).
+
+\bibitem{rf0} R.~Fitzpatrick, {\em Plasma Physics: An Introduction}, 2nd Edition. (CRC Press, Boca Raton FL, 2022.)
+
+\bibitem{fc} B.D.~Fried, and S.D.~Conte, {\em The Plasma Dispersion Function}. (Academic Press, New York NY, 1961.)
+
+\bibitem{as} M.~Abramowitz, and I.A.~Stegun, {\em Handbook of Mathematical Functions}. (Dover, New York NY, 1965).
+
+\end{thebibliography}
+
+
+\end{document}
