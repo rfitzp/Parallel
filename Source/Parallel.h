@@ -28,7 +28,8 @@ extern "C" void NameListRead (double* mue, double* lambdaD, double* sigma,
 			      double* xmax, int* Nx,
 			      double* gmax, int* Ng,
 			      double* tmax, int* Nt,
-			      double* gamma, double* ksmax);
+			      double* gamma, double* ksmax,
+			      int* flg);
 
 // ############
 // Class header
@@ -55,6 +56,7 @@ class Parallel
   int    Nt;      // Number of equally spaced times between 0 and tmax (read from namelist)
   double gamma;   // Bromwich contour evaluated at g_r = gamma (read from namelist)
   double ksmax;   // Maximum value of k * sigma (read from namelist)
+  int    flg;     // If set then do not Fourier transform
 
   // ................
   // Calculation data
@@ -64,10 +66,15 @@ class Parallel
   Array<double,1>          gg;         // g grid points
   Array<double,1>          tt;         // t grid points
 
-  Array<complex<double>,2> Fn0;        // Fn0 (x, g)
-  Array<complex<double>,2> FT0;        // FT0 (x, g)
-  Array<complex<double>,2> Fn2;        // Fn2 (x, g)
-  Array<complex<double>,2> FT2;        // FT2 (x, g)
+  Array<complex<double>,2> KKn0;       // Kn0 (k, g)
+  Array<complex<double>,2> KKT0;       // KT0 (k, g)
+  Array<complex<double>,2> KKn2;       // Kn2 (k, g)
+  Array<complex<double>,2> KKT2;       // KT2 (k, g)
+
+  Array<complex<double>,2> Fn0;        // Fn0 (x, t)
+  Array<complex<double>,2> FT0;        // FT0 (x, t)
+  Array<complex<double>,2> Fn2;        // Fn2 (x, t)
+  Array<complex<double>,2> FT2;        // FT2 (x, t)
 
   Array<double,2>          ne0;        // delta n_e (x, t) for particle source
   Array<double,2>          Te0;        // delta T_e (x, t) for particle source
@@ -86,20 +93,20 @@ class Parallel
   Array<double,2>          Qe2;        // Q_e (x, t) for particle source
   Array<double,2>          qe2;        // q_e (x, t) for energy source
 
-  Array<double,1>          Lne0;       // Spatial half-width of n_e (t, x) for particle source
-  Array<double,1>          LTe0;       // Spatial half-width of T_e (t, x) for particle source
-  Array<double,1>          Lne2;       // Spatial half-width of n_e (t, x) for energy source
-  Array<double,1>          LTe2;       // Spatial half-width of T_e (t, x) for energy source
+  Array<double,1>          Lne0;       // Spatial half-width of n_e (x, t) for particle source
+  Array<double,1>          LTe0;       // Spatial half-width of T_e (x, t) for particle source
+  Array<double,1>          Lne2;       // Spatial half-width of n_e (x, t) for energy source
+  Array<double,1>          LTe2;       // Spatial half-width of T_e (x, t) for energy source
 
-  Array<double,1>          Wne0;       // Spatial 90%-width of n_e (t, x) for particle source
-  Array<double,1>          WTe0;       // Spatial 90%-width of T_e (t, x) for particle source
-  Array<double,1>          Wne2;       // Spatial 90%-width of n_e (t, x) for energy source
-  Array<double,1>          WTe2;       // Spatial 90%-width of T_e (t, x) for energy source
+  Array<double,1>          Wne0;       // Spatial 90%-width of n_e (x, t) for particle source
+  Array<double,1>          WTe0;       // Spatial 90%-width of T_e (x, t) for particle source
+  Array<double,1>          Wne2;       // Spatial 90%-width of n_e (x, t) for energy source
+  Array<double,1>          WTe2;       // Spatial 90%-width of T_e (x, t) for energy source
   
-  Array<double,1>          ne00;       // n_e (t, 0) for particle source
-  Array<double,1>          Te00;       // T_e (t, 0) for particle source
-  Array<double,1>          ne20;       // n_e (t, 0) for energy source
-  Array<double,1>          Te20;       // T_e (t, 0) for energy source
+  Array<double,1>          ne00;       // n_e (0, t) for particle source
+  Array<double,1>          Te00;       // T_e (0, t) for particle source
+  Array<double,1>          ne20;       // n_e (0, t) for energy source
+  Array<double,1>          Te20;       // T_e (0, t) for energy source
   
   gsl_interp_accel*        acc_n0r;    // Accelerator for Fn0_r
   gsl_interp_accel*        acc_n0i;    // Accelerator for Fn0_i

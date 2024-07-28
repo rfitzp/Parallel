@@ -10,13 +10,14 @@ Parallel::Parallel ()
   // .............
   // Read namelist
   // .............
-  NameListRead (&mue, &lambdaD, &sigma, &xmax, &Nx, &gmax, &Ng, &tmax, &Nt, &gamma, &ksmax);
+  NameListRead (&mue, &lambdaD, &sigma, &xmax, &Nx, &gmax, &Ng, &tmax, &Nt, &gamma, &ksmax, &flg);
 
   printf ("\nmue = %10.3e  lambdaD = %10.3e  sigma = %10.3e\n", mue, lambdaD, sigma);
   printf ("\nxmax = %10.3e  Nx = %4d\n", xmax, Nx);
   printf ("\ngmax = %10.3e  Ng = %4d\n", gmax, Ng);
   printf ("\ntmax = %10.3e  Nt = %4d\n", tmax, Nt);
   printf ("\ngamma = %10.3e  ksmax = %10.3e\n", gamma, ksmax);
+  printf ("\nflg = %1d\n", flg);
  
   // -----------------------------------
   // Set adaptive integration parameters
@@ -85,11 +86,16 @@ void Parallel::Solve ()
   // ...............
   // Allocate memory
   // ...............
-  xx.resize  (Nx+1);
-  kk.resize  (Nx+1);
-  gg.resize  (Ng+1);
-  tt.resize  (Nt+1);
+  xx.resize (Nx+1);
+  kk.resize (Nx+1);
+  gg.resize (Ng+1);
+  tt.resize (Nt+1);
 
+  KKn0.resize (Nx+1, Ng+1);
+  KKT0.resize (Nx+1, Ng+1);
+  KKn2.resize (Nx+1, Ng+1);
+  KKT2.resize (Nx+1, Ng+1);
+  
   Fn0.resize (Nx+1, Ng+1);
   FT0.resize (Nx+1, Ng+1);
   Fn2.resize (Nx+1, Ng+1);
@@ -178,6 +184,28 @@ void Parallel::Solve ()
       tt(j) = t;
     }
 
+  // ................................
+  // Calculate Kn0, KT0, Kn2, and KT2
+  // ................................
+  for (int i = 0; i <= Nx; i++)
+    for (int j = 0; j <= Ng; j++)
+      {
+	if (i == 0)
+	  {
+	    KKn0 (i, j) = GetKn0 (complex<double> (gamma, gg(j)), kk(1));
+	    KKT0 (i, j) = GetKT0 (complex<double> (gamma, gg(j)), kk(1));
+	    KKn2 (i, j) = GetKn2 (complex<double> (gamma, gg(j)), kk(1));
+	    KKT2 (i, j) = GetKT2 (complex<double> (gamma, gg(j)), kk(1));
+	  }
+	else
+	  {
+	    KKn0 (i, j) = GetKn0 (complex<double> (gamma, gg(j)), kk(i));
+	    KKT0 (i, j) = GetKT0 (complex<double> (gamma, gg(j)), kk(i));
+	    KKn2 (i, j) = GetKn2 (complex<double> (gamma, gg(j)), kk(i));
+	    KKT2 (i, j) = GetKT2 (complex<double> (gamma, gg(j)), kk(i));
+	  }
+      }
+
   // ....................................................
   // Calculate inverse Laplace transform target functions
   // ....................................................
@@ -199,32 +227,64 @@ void Parallel::Solve ()
       for (int l = 0; l <= Ng; l++)
 	{
 	  gx[l] = gg(l);
-	  Fr[l] = real (Fn0(i, l));
-	  Fi[l] = imag (Fn0(i, l));
+	  if (flg)
+	    {
+	      Fr[l] = real (KKn0(i, l));
+	      Fi[l] = imag (KKn0(i, l));
+	    }
+	  else
+	    {
+	      Fr[l] = real (Fn0(i, l));
+	      Fi[l] = imag (Fn0(i, l));
+	    }
 	}
       gsl_spline_init (spline_n0r, gx, Fr, Ng+1);
       gsl_spline_init (spline_n0i, gx, Fi, Ng+1);
 
       for (int l = 0; l <= Ng; l++)
 	{
-	  Fr[l] = real (FT0(i, l));
-	  Fi[l] = imag (FT0(i, l));
+	  if (flg)
+	    {
+	      Fr[l] = real (KKT0(i, l));
+	      Fi[l] = imag (KKT0(i, l));
+	    }
+	  else
+	    {
+	      Fr[l] = real (FT0(i, l));
+	      Fi[l] = imag (FT0(i, l));
+	    }
 	}
       gsl_spline_init (spline_T0r, gx, Fr, Ng+1);
       gsl_spline_init (spline_T0i, gx, Fi, Ng+1);
 
       for (int l = 0; l <= Ng; l++)
 	{
-	  Fr[l] = real (Fn2(i, l));
-	  Fi[l] = imag (Fn2(i, l));
+	  if (flg)
+	    {
+	      Fr[l] = real (KKn2(i, l));
+	      Fi[l] = imag (KKn2(i, l));
+	    }
+	  else
+	    {
+	      Fr[l] = real (Fn2(i, l));
+	      Fi[l] = imag (Fn2(i, l));
+	    }
 	}
       gsl_spline_init (spline_n2r, gx, Fr, Ng+1);
       gsl_spline_init (spline_n2i, gx, Fi, Ng+1);
 
       for (int l = 0; l <= Ng; l++)
 	{
-	  Fr[l] = real (FT2(i, l));
-	  Fi[l] = imag (FT2(i, l));
+	  if (flg)
+	    {
+	      Fr[l] = real (KKT2(i, l));
+	      Fi[l] = imag (KKT2(i, l));
+	    }
+	  else
+	    {
+	      Fr[l] = real (FT2(i, l));
+	      Fi[l] = imag (FT2(i, l));
+	    }
 	}
       gsl_spline_init (spline_T2r, gx, Fr, Ng+1);
       gsl_spline_init (spline_T2i, gx, Fi, Ng+1);
@@ -260,7 +320,7 @@ void Parallel::Solve ()
 	  RK4RK5Fixed (g, y, err, gmax - g);
 
 	  ne0(i, j) = y(0);
-	  Te0(i ,j) = y(1);
+	  Te0(i, j) = y(1);
 	  ne2(i, j) = y(2);
 	  Te2(i, j) = y(3);
 	}
@@ -381,9 +441,9 @@ void Parallel::Solve ()
       LTe2(j) = (xx(I-1) * x0 - xx(I) * xm1) / (x0 - xm1);
     }
 
-  // .............................
+  // ............................
   // Calculate spatial 90%-widths
-  // .............................
+  // ............................
   Wne0(0) = 0.;
   WTe0(0) = 0.;
   Wne2(0) = 0.;
@@ -701,10 +761,10 @@ void Parallel::CalcF ()
       Weight[j+2] +=      h /3.;
     }
 
-  // ............................................
-  // Calculate Laplace transform target functions
-  // ............................................
-  printf ("\nCalculating inverse Laplace transform target functions:\n");
+  // ..............................................
+  // Calculate Laplace transformed target functions
+  // ..............................................
+  printf ("\nCalculating inverse Laplace transformed target functions:\n");
   for (int i = 0; i <= Nx; i++)
     {
       if (i%10 == 0)
@@ -755,7 +815,7 @@ void Parallel::CalcF ()
   delete[] Weight;
 
   // ...........................................
-  // Plots Laplace transformed target functions
+  // Output Laplace transformed target functions
   // ...........................................
   file1 = OpenFilew ("Plots/Fn0.out");
   file2 = OpenFilew ("Plots/FT0.out");

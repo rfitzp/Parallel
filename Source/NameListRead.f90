@@ -8,7 +8,7 @@ subroutine NameListRead (MUE, LAMBDAD, SIGMA,&
      XMAX, NX,&
      GMAX, NG,&
      TMAX, NT,&
-     GAMMA, KSMAX)&
+     GAMMA, KSMAX, FLG)&
      bind (c, name = 'NameListRead')
 
   use, intrinsic :: iso_c_binding, only: c_int, c_double
@@ -29,8 +29,10 @@ subroutine NameListRead (MUE, LAMBDAD, SIGMA,&
 
   real    (kind = c_double), intent (inout) :: GAMMA
   real    (kind = c_double), intent (inout) :: KSMAX
+
+  integer (kind = c_int),    intent (inout) :: FLG
  
-  namelist /PARALLEL_CONTROL/ MUE, LAMBDAD, SIGMA, XMAX, NX, GMAX, NG, TMAX, NT, GAMMA, KSMAX
+  namelist /PARALLEL_CONTROL/ MUE, LAMBDAD, SIGMA, XMAX, NX, GMAX, NG, TMAX, NT, GAMMA, KSMAX, FLG
        
   open  (unit = 100, file = 'Inputs/Namelist.nml', status = 'old')
   read  (unit = 100, nml  = PARALLEL_CONTROL)
