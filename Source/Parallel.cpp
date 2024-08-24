@@ -7,17 +7,45 @@
 // ###########
 Parallel::Parallel ()
 {
-  // .............
-  // Read namelist
-  // .............
-  NameListRead (&mue, &lambdaD, &sigma, &xmax, &Nx, &gmax, &Ng, &tmax, &Nt, &gamma, &ksmax, &flg);
+  // .................................................
+  // Make sure that directories Inputs and Plots exist
+  // .................................................
+  if (!CreateDirectory ("Inputs"))
+    {
+      exit (1);
+    }
+  if (!CreateDirectory ("Plots"))
+    {
+      exit (1);
+    }
 
-  printf ("\nmue = %10.3e  lambdaD = %10.3e  sigma = %10.3e\n", mue, lambdaD, sigma);
-  printf ("\nxmax = %10.3e  Nx = %4d\n", xmax, Nx);
-  printf ("\ngmax = %10.3e  Ng = %4d\n", gmax, Ng);
-  printf ("\ntmax = %10.3e  Nt = %4d\n", tmax, Nt);
-  printf ("\ngamma = %10.3e  ksmax = %10.3e\n", gamma, ksmax);
-  printf ("\nflg = %1d\n", flg);
+  // .............................................
+  // Read calculation data from JSON namelist file
+  // .............................................
+
+  string JSONFilename = "Inputs/Namelist.json";
+  json   JSONData     = ReadJSONFile (JSONFilename);
+
+  // Set physics parameters
+  mue     = JSONData["mue"]    .get<double> ();
+  lambdaD = JSONData["lambdaD"].get<double> ();
+  sigma   = JSONData["sigma"]  .get<double> ();
+  xmax    = JSONData["xmax"]   .get<double> ();
+  Nx      = JSONData["Nx"]     .get<int>    ();
+  gmax    = JSONData["gmax"]   .get<double> ();
+  Ng      = JSONData["Ng"]     .get<int>    ();
+  tmax    = JSONData["tmax"]   .get<double> ();
+  Nt      = JSONData["Nt"]     .get<int>    ();
+  gamma   = JSONData["gamma"]  .get<double> (); 
+  ksmax   = JSONData["ksmax"]  .get<double> ();
+  flg     = JSONData["flg"]    .get<int>    ();
+
+  printf ("\nmue   = %10.3e  lambdaD = %10.3e  sigma = %10.3e\n", mue, lambdaD, sigma);
+  printf ("xmax  = %10.3e  Nx      = %4d\n", xmax, Nx);
+  printf ("gmax  = %10.3e  Ng      = %4d\n", gmax, Ng);
+  printf ("tmax  = %10.3e  Nt      = %4d\n", tmax, Nt);
+  printf ("gamma = %10.3e  ksmax   = %10.3e\n", gamma, ksmax);
+  printf ("flg   = %1d\n", flg);
  
   // -----------------------------------
   // Set adaptive integration parameters
@@ -1246,6 +1274,36 @@ void Parallel::RK4RK5Fixed (double& x, Array<double,1> y, Array<double,1> err, d
   x += h;
 }
 
+// ################################
+// Function to read JSON input file
+// ################################
+json Parallel::ReadJSONFile (const string& filename)
+{
+  ifstream JSONFile (filename);
+  json     JSONData;
+
+  if (JSONFile.is_open ())
+    {
+      try
+	{
+	  JSONFile >> JSONData;
+        }
+      catch (json::parse_error& e)
+	{
+	  cerr << "Unable to parse JSON namelist file: " << e.what() << std::endl;
+	  exit (1);
+        }
+      JSONFile.close ();
+    }
+  else
+    {
+      cerr << "Unable to open JSON namelist file: " << filename << std::endl;
+      exit (1);
+    }
+
+  return JSONData;
+}
+
 // #####################################
 // Function to open new file for writing
 // #####################################
@@ -1259,4 +1317,32 @@ FILE* Parallel::OpenFilew (char* filename)
     }
   return file;
 }
+
+// ###############################################################
+// Function to check that directory exists and create it otherwise
+// ###############################################################
+bool Parallel::CreateDirectory (const char* path)
+{
+  struct stat st = {0};
+  
+  if (stat (path, &st) == -1)
+    {
+#ifdef _WIN32
+      if (mkdir (path) != 0)
+	{
+	  printf ("Error creating directory: %s\n", path);
+	  return false;
+	}
+#else
+      if (mkdir (path, 0700) != 0)
+	{
+	  printf ("Error creating directory: %s\n", path);
+	  return false;
+	}
+#endif
+    }
+  
+  return true;
+}
+
 

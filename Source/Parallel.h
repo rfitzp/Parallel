@@ -7,12 +7,26 @@
 
 #pragma once
 
+#define _CRT_SECURE_NO_DEPRECATE
+#define _USE_MATH_DEFINES
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
 #include <complex>
+#include <iostream>
+#include <fstream>
 
+#ifdef _WIN32
+ #include <direct.h>
+ #define mkdir _mkdir
+#else
+ #include <sys/stat.h>
+ #include <sys/types.h>
+#endif
+
+#include <nlohmann/json.hpp>
 #include <blitz/array.h>
 #include <gsl/gsl_spline.h>
 #include <netcdf.h>
@@ -20,16 +34,9 @@
 #include "Faddeeva.h"
 
 using namespace std;
+using json = nlohmann::json;
 using namespace blitz;
 using namespace Faddeeva;
-
-// Namelist reading function
-extern "C" void NameListRead (double* mue, double* lambdaD, double* sigma,
-			      double* xmax, int* Nx,
-			      double* gmax, int* Ng,
-			      double* tmax, int* Nt,
-			      double* gamma, double* ksmax,
-			      int* flg);
 
 // ############
 // Class header
@@ -41,22 +48,22 @@ class Parallel
   // ..................
   // Physics parameters
   // ..................
-  double mue;     // Electron-ion collision frequency divided by total electron collision frequency (read from namelist)
-  double lambdaD; // Electron Debye length divided by electron mean-free-path between collisions (read from namelist)
-  double sigma;   // Width of particle and energy source deposition profiles (in units of the electron mean-free-path) (read from namelist)
+  double mue;     // Electron-ion collision frequency divided by total electron collision frequency (read from JSON file)
+  double lambdaD; // Electron Debye length divided by electron mean-free-path between collisions (read from JSON file)
+  double sigma;   // Width of particle and energy source deposition profiles (in units of the electron mean-free-path) (read from JSON file)
 
   // ......................
   // Calculation parameters
   // ......................
-  double xmax;    // Simulation extends from x = 0 to x = xmax (read from namelist)
-  int    Nx;      // Number of equally spaced points on x and k grids (read from namelist)
-  double gmax;    // Bromwich contour runs from g_i = 0 to g_i = g_max (read from namelist)
-  int    Ng;      // Number of unequally spaced grid points on Bromwich contour (read from namelist)
-  double tmax;    // Simulation extends from t = 0 to t = tmax (read from namelist)
-  int    Nt;      // Number of equally spaced times between 0 and tmax (read from namelist)
-  double gamma;   // Bromwich contour evaluated at g_r = gamma (read from namelist)
-  double ksmax;   // Maximum value of k * sigma (read from namelist)
-  int    flg;     // If set then do not Fourier transform
+  double xmax;    // Simulation extends from x = 0 to x = xmax (read from JSON file)
+  int    Nx;      // Number of equally spaced points on x and k grids (read from JSON file)
+  double gmax;    // Bromwich contour runs from g_i = 0 to g_i = g_max (read from JSON file)
+  int    Ng;      // Number of unequally spaced grid points on Bromwich contour (read from JSON file)
+  double tmax;    // Simulation extends from t = 0 to t = tmax (read from JSON file)
+  int    Nt;      // Number of equally spaced times between 0 and tmax (read from JSON file)
+  double gamma;   // Bromwich contour evaluated at g_r = gamma (read from JSON file)
+  double ksmax;   // Maximum value of k * sigma (read from JSON file)
+  int    flg;     // If set then do not Fourier transform (read from JSON file)
 
   // ................
   // Calculation data
@@ -188,7 +195,11 @@ private:
 		       int diag, FILE* file);
   // Fixed step length RK4/RK5 integration routine
   void RK4RK5Fixed (double& x, Array<double,1> y, Array<double,1> err, double h);
-  
+
+  // Read JSON input file
+  json ReadJSONFile (const string& filename);
   // Open new file for writing
   FILE* OpenFilew (char* filename);
+  // Check that directory exists and create it otherwise
+  bool CreateDirectory (const char* path);
 };
