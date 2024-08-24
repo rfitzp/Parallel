@@ -3,7 +3,7 @@
 C_COMPILER = clang++
 C_FLAGS    = -w -O3 -std=c++17
 C_INCLUDE  = -I/opt/local/include 
-C_LIBS     = -L/opt/local/lib -L/opt/local/lib/libgcc -lgsl -lgslcblas
+C_LIBS     = -L/opt/local/lib -L/opt/local/lib/libgcc -lgsl -lgslcblas -lnetcdf
 
 C_HEADER = Parallel.h Faddeeva.h
 C_SOURCE = main.cpp Parallel.cpp Faddeeva.cpp
