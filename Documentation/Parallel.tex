@@ -8,21 +8,23 @@
 
 \begin{document}
 
-\title{Time-Dependent Parallel Electron Particle and Energy Transport in  a Magnetized Plasma of Arbitrary Collisonality}
+\title{Time-Dependent Parallel Electron Energy Transport in  a Magnetized Plasma of Arbitrary Collisonality}
 \author{T.~Wang and R.~Fitzpatrick\,\footnote{rfitzp@utexas.edu}}
 \affiliation{Institute for Fusion Studies,  Department of Physics,  University of Texas at Austin,  Austin TX 78712, USA}
 \maketitle
 
 \section{Introduction}
-In Ref.~\onlinecite{haz},  the steady-state transport of electron number density and energy parallel to the magnetic field
-of a magnetized, weakly-coupled, electron-ion plasma of arbitrary collisionality was investigated  in slab geometry   by solving a simplified one-dimensional kinetic equation for the electron distribution function that employed a Bhatnagar-Gross-Krook (BGK)  electron-electron collision
-operator.\cite{krook}  The resulting model was able to successfully reproduce standard results for the the electron heat flux in both the short mean-free-path and
-the long mean-free-path limits. In the short mean-free-path limit, electron energy transport was found to be local and diffusive in nature, whereas the transport was found to be non-local and convective in the
-long mean-free-path limit. Somewhat surprisingly, electron particle transport was found to be local and diffusive at all collisionalities. 
-The aim of this paper is to generalize the analysis of Ref.~\onlinecite{haz} by  incorporating a model electron-ion collision operator,
- including a self-consistent calculation of the parallel electric field, and taking time dependence into account.
+In Hazeltine (1998),\cite{haz}  the steady-state transport of electron number density and energy parallel to the magnetic field
+of a magnetized, weakly-coupled, electron-ion plasma of arbitrary collisionality is investigated  in slab geometry   by solving a simplified one-dimensional kinetic equation for the electron distribution function that employs a Bhatnagar-Gross-Krook (BGK)  electron-electron collision
+operator.\cite{krook}  The resulting model is able to successfully reproduce standard results for the the electron heat flux in both the short mean-free-path and
+the long mean-free-path limits. In the short mean-free-path limit, electron energy transport is found to be local and diffusive in nature, whereas the transport is found to be non-local and convective in the
+long mean-free-path limit. 
 
-\section{Basic Model}
+The aim of this paper is to generalize the analysis of Hazeltine (1998) by  incorporating a model electron-ion collision operator,
+ including a self-consistent calculation of the parallel electric field, and taking time dependence into account. The resulting enhanced model is used to investigate the transport of electron
+ energy across a magnetic island chain in a tokamak plasma. 
+
+\section{Fundamental Model}\label{s2}
 
 \subsection{Electron Distribution Function}
 Let $f_e(t,{\bf x},{\bf v})$ be the ensemble-averaged electron distribution function. Here, $t$ denotes time, ${\bf x}=(x_1,\, x_2,\, x_3)$
@@ -69,7 +71,7 @@ which yields
 \begin{equation}\label{dne}
 \frac{\delta n_e(t,x_3)}{n_e} =\int_{-\infty}^\infty f(t,x_3,v_3)\,dv_3.
 \end{equation}
-Here, $\delta n_e$ is the perturbed electron number density. 
+Here, $\delta n_e(t,x_3)$ is the perturbed electron number density. 
 
 Likewise, in order for the electron-electron collision operator to conserve electron momentum, we need
 \begin{equation}\label{e27}
@@ -85,7 +87,7 @@ which yields
 \begin{equation}\label{e29}
  V_e(t,x_3) = \int_{-\infty}^\infty v_3\,f(t,x_3,v_3)\,dv_3.
 \end{equation}
-Here, $V_e$ is the perturbed parallel drift velocity of the electrons with respect to the ions.
+Here, $V_e(t,x_3)$ is the perturbed parallel drift velocity of the electrons with respect to the ions.
 
 Finally, in order for the electron-electron collision operator to conserve electron energy, we require
 \begin{equation}\label{e20}
@@ -101,7 +103,7 @@ which yields
 \begin{equation}\label{dte}
 \frac{\delta T_e(t,x_3)}{T_e} = 2\,\int_{-\infty}^\infty \left(\frac{v_3^{\,2}}{v_{t\,e}^{\,2}}-\frac{1}{2}\right) f(t,x_3,v_3)\,dv_3.
 \end{equation}
-Here, $\delta T_e$ is the perturbed electron temperature.
+Here, $\delta T_e(t,x_3)$ is the perturbed electron temperature.
 Thus, the electron-electron collision operator, (\ref{e24}), is now fully specified in terms of the perturbed electron distribution function,
 $f(t,x_3,v_3)$. 
 
@@ -159,7 +161,7 @@ q_{\parallel\,3}(t,x_3) = \frac{1}{2}\,m_e\,n_e\int_{-\infty}^\infty v_3\left(v_
 -\frac{3}{2}\,v_{t\,e}^{\,2}\right)f(t,x_3,v_3)\,dv_3.
 \end{equation}
 
-\section{Fourier-Laplace Transform Solution of Electron Kinetic Equation}
+\section{Fourier-Laplace Transform Solution of Electron Kinetic Equation}\label{s3}
 \subsection{Normalization}
 Let
 \begin{align}
@@ -170,7 +172,7 @@ let
 \begin{equation}
 l_e= \frac{v_{t\,e}}{\nu_e}
 \end{equation}
-be the mean-free-path between collisions. 
+be the electron mean-free-path between collisions. 
 Let us adopt the following normalizations: 
 $\hat{t} = \nu_{e}\,t$,
 $\hat{x}= x_3/l_e$,
@@ -390,7 +392,7 @@ Finally, Eqs.~(\ref{e43}) and (\ref{e54}) give\,\cite{haz}
 \bar{q}_e(g,\hat{k}) = \xi\,G(\xi)\,\delta\bar{T}_e(g,\hat{k}),
 \end{equation}
 where
-\begin{equation}
+\begin{equation}\label{e56}
 G(\xi) = \frac{(\xi^2-1)-(\xi^2-3/2)\,Z_0}{2\,\xi^2-(2\,\xi^2-1)\,Z_0}.
 \end{equation}
 Note that the electron heat flux only depends on the perturbed electron temperature, and is independent of both the
@@ -426,75 +428,149 @@ Finally, Eqs.~(\ref{e57})--(\ref{e59})  can be solved to give\,\cite{haz}
 The previous three equations specify the Fourier-Laplace transformed electron number density, drift velocity, and temperature
 directly in terms of the particle and energy sources. 
 
-\iffalse
-\section{Results}
-\subsection{Model Electron Particle and Energy Sources}
-Suppose that the particle and energy sources have a Gaussian spatial dependence, with a maximum at $\hat{x}=0$, and a characteristic width $\sigma=\hat{\sigma}\,l_e$. Suppose,
-further, that the sources  
-are switched on suddenly at $\hat{t}=0$.  In other words, 
+\section{Electron Energy Transport across a Magnetic Island Chain}
+
+\subsection{Introduction}
+Consider a tearing mode  in a tokamak plasma.\cite{fkr} Suppose that the mode possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction. As is well-known, the
+mode resonates with the equilibrium magnetic field at the so-called ``rational surface'' whose minor radius, $r_s$, satisfies $q(r_s)=m/n$, where $q(r)$ is the
+safety-factor profile, and $r$ denotes the minor radius of equilibrium magnetic flux-surfaces.\cite{wesson} The tearing mode reconnects magnetic flux at the rational surface, in the process opening up a magnetic island chain, centered on the surface,  which also possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction.\cite{ruth}  Let $W$ be the full radial width of the island chain. 
+
+As is well-known, if $W$ exceeds a fairly small critical width, $W_c$, then the equilibrium electron temperature
+gradient is flattened in the region lying within the island chain's magnetic separatrix. In this case, the perpendicular electron energy flux across the island chain, driven by radial gradients in the electron temperature, is diverted   along magnetic field-lines
+in a thin boundary layer that lies on the island separatrix. See Fig.~\ref{fig1}. Let $\delta$ be the radial width of the boundary layer. The critical island width, $W_c$, is defined as the island width at which $\delta = W$. If
+$W>W_c$ then the electron temperature is flattened by the island chain, and the heat transport across the chain is predominately parallel to magnetic field-lines. On the other hand,  if $W<W_c$ then the electron temperature is unaffected by the island chain, and the heat transport across the chain is predominately perpendicular to magnetic field-lines. We wish to employ the theory developed Sects.~\ref{s2} and \ref{s3} to calculate the critical
+island width at arbitrary collisionality. (In reality, parallel electron heat transport in tokamak plasmas does not lie in the short mean-free-path regime.) We also wish to calculate the critical island width in the case
+in which the heat flow across the island chain oscillates at some frequency $\omega$. 
+
+Our calculation takes place in the simplified island geometry pictured in Fig.~\ref{fig2}. Here, the separatrix boundary layer has been split into two straight boundary layers which represent the inner
+(in $r$) and outer sides of the magnetic separatrix.  Electron energy flows parallel to magnetic field-lines within these boundary layers. Furthermore, any energy that flows out of the ends of the inner boundary layer is
+fed into the corresponding end of the outer boundary layer, and vice versa. 
+
+\subsection{Connection Length}
+Let $x$ measure distance along magnetic field-lines in the separatrix boundary layers. The equation of the field-lines is\,\cite{rf}
+\begin{equation}
+\frac{dx}{d\zeta} =\frac{R_0\,r_s}{n\,s_s}\,\frac{1}{|r-r_s|},
+\end{equation}
+where $s_s = (d\ln q/\ln s)_{r_s}$ is the magnetic shear at the rational surface, and $R_0$ is the plasma minor radius. Here, $\zeta=m\,\theta-n\,\phi$ is a helical angle. 
+ Now, on the magnetic separatrix\,\cite{rf}
+\begin{equation}
+|r-r_s| = \frac{W}{2}\,\sin\left(\frac{\zeta}{2}\right).
+\end{equation}
+Here, the island O-point lies at $\zeta=\pi$, whereas the X-points lie at $\zeta=0$, $2\pi$. The average value of $|r-r_s|$ in the boundary layers is
+\begin{equation}
+\langle |r-r_s|\rangle  =\frac{W}{2}\,\int_0^\pi \sin\left(\frac{\zeta}{2}\right)\,\frac{d\zeta}{\pi}= \frac{W}{\pi}.
+\end{equation}
+Hence, the so-called ``connection length", which is defined as the length of the boundary layers parallel to magnetic field-lines, is
+\begin{equation}
+L = \int_0^{2\pi}\frac{dx}{d\zeta}\,d\zeta = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi}{\langle|r-r_s|\rangle} = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi^2}{W}.
+\end{equation}
+Here, the island O-point lies at $x=0$, whereas the X-points lie at $x=\pm L/2$. Note that the two ends of the boundary layers lie at the X-points. See Fig.~\ref{fig2}.
+
+\subsection{Temperature Perturbation}
+Consider the inner separatrix boundary layer. Suppose that the perturbed electron temperature on the inner (in $r$) side of the layer is
+\begin{equation}
+\delta T_{e\,{\rm in}}(x,t) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x}{L}\right)\cos(\omega \,t).
+\end{equation}
+Suppose that the layer is much thinner than the island, which implies that the perturbed electron temperature is zero inside the island. Thus, the perturbed electron
+temperature on the outer side of the layer is 
+\begin{equation}
+\delta T_{e\,{\rm out}}(t,x) =0.
+\end{equation}
+Finally, let 
+\begin{equation}
+\delta T_{e\,}(t,x) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x}{L}\right)\cos(\omega \,t-\alpha)
+\end{equation}
+be the average perturbed electron temperature in the layer. Here, $\alpha$ represents a phase-lag between the average temperature and the driving temperature on the
+inner side of the layer. Moreover, $\omega>0$ is the oscillation frequency of the temperature perturbation. Finally, $\delta T_{e\,0}$ represents the small temperature difference 
+between the middle  and the two ends of the layer that is responsible for driving the flow of energy around the island. Note that the perturbed temperature in the outer boundary layer is
+minus that in the inner boundary layer. 
+
+\subsection{Parallel Electron Heat Flux}
+The normalized Fourier-Laplace transformed perturbed electron temperature in the inner boundary layer is
 \begin{align}
-S_0(\hat{t},\hat{x}) &= \frac{A_0}{\sqrt{2\pi}\,\hat{\sigma}}\,\exp\left(-\frac{\hat{x}^2}{2\,\hat{\sigma}^2}\right)H(\hat{t}),\\[0.5ex]
-S_2(\hat{t},\hat{x}) &= \frac{A_2}{\sqrt{2\pi}\,\hat{\sigma}}\,\exp\left(-\frac{\hat{x}^2}{2\,\hat{\sigma}^2}\right)H(\hat{t}),
+\delta\bar{T}_e(g,\hat{k}) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\int_0^\infty \delta \hat{T}_e(\hat{x},\hat{t})\,{\rm e}^{-g\,\hat{t}}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x}
+\nonumber\\[0.5ex]
+&= \delta\hat{T}_{e\,0}\left[\delta (\hat{k}-\hat{k_0})+ \delta(\hat{k}+\hat{k}_0)\right]\frac{1}{2}\left(
+\frac{{\rm e}^{-{\rm i}\,\alpha}}{g-{\rm i}\,\hat{\omega}}+ \frac{{\rm e}^{\,{\rm i}\,\alpha}}{g+\hat{\rm i}\,\hat{\omega}}\right).
 \end{align}
-where $H(\hat{t})$ is a Heaviside step function, and $A_0$ and $A_2$ are arbitrary constants. 
-Note that
-\begin{align}
-\int_{-\infty}^\infty S_0(\hat{t},\hat{x})\,d\hat{x}  & =A_0\,H(\hat{t}),\\[0.5ex]
-\int_{-\infty}^\infty S_2(\hat{t},\hat{x})\,d\hat{x}  & =A_2\,H(\hat{t}).
-\end{align}
-It follows from Eq.~(\ref{e41x}) that 
-\begin{align}
-\bar{S}_0(g,\hat{k}) = \frac{A_0}{\sqrt{2\pi}\,g}\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right],\\[0.5ex]
-\bar{S}_2(g,\hat{k}) = \frac{A_2}{\sqrt{2\pi}\,g}\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right].
-\end{align}
+Here, $\hat{x}=x/l_e$, $\hat{L}=L/l_e$, $\hat{t}=\nu_e\,t$, $\hat{\omega}=\omega/\nu_e$, $\delta \hat{T} = \delta T_e/T_e$, $\delta \hat{T}_{e\,0} = \delta T_{e\,0}/T_e$, and
+$\hat{k}_0=\pi/\hat{L}$. Moreover, $\nu_e$, $l_e$, and $T_e$ are the total electron collision frequency, the electron mean-free-path between collisions, and the equilibrium electron temperarture,
+respectively, at the rational surface. 
+
+Now, according to Eq.~(\ref{e55}), the Fourier-Laplace transformed normalized parallel electron heat flux in the inner boundary layer is
+\begin{equation}
+\bar{q}_e(g,\hat{k}) = \xi\,G(\xi)\,\delta\bar{T}_e(g,\hat{k}),
+\end{equation}
+where
+\begin{equation}
+\xi= \frac{{\rm i}\,(1+g)}{\hat{k}},
+\end{equation}
+and the function $G(\xi)$ is defined in Eq.~(\ref{e56}). 
+
 Let
+\begin{equation}
+G(\xi) = G_r(\xi_r,\xi_i) + {\rm i}\,(\xi_r,\xi_i),
+\end{equation}
+where
 \begin{align}
-K_{n,0}(g,\hat{k})&=   \frac{-1-g_2\,(G-g_1/2)}{g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
-K_{T,0}(g,\hat{k})&= \frac{{\mit\Lambda}_D}{g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
-K_{n,2}(g,\hat{k})&=   \frac{1}{2\,g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]},\\[0.5ex]
-K_{T,2}(g,\hat{k})&= \frac{-{\mit\Lambda}_D+g_1\,g_2}{2\,g\,(1+g)\,[(G-g_1/2)\,({\mit\Lambda}_D-g_1\,g_2)-g_1]}.
+\xi_r &= \frac{\hat{\omega}}{\hat{k}_0},\\[0.5ex]
+\xi_i&= \frac{1}{\hat{k}_0},
 \end{align}
+and $G_r$ and $G_i$ are real. It is easily demonstrated that
+\begin{align}
+G_r(\xi_r,\xi_i)&= G_r(-\xi_r,\xi_i)= G_r(\xi_r,-\xi_i)=G_r(-\xi_r,-\xi_i),\\[0.5ex]
+G_i(\xi_r,\xi_i)&=- G_i(-\xi_r,\xi_i)= -G_i(\xi_r,-\xi_i)=G_i(-\xi_r,-\xi_i).
+\end{align}
+The time-asymptotic normalized parallel heat flux in real space,
+\begin{equation}
+\hat{q}_e(\hat{t},\hat{x}) = \lim_{\hat{t}\rightarrow\infty}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+\left(\frac{1}{2\pi\,{\rm i}}\int_C \bar{q}_e(g,\hat{k})\,{\rm e}^{\,g\,\hat{t}}\,dg\right){\rm e}^{\,{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{k},
+\end{equation}
+where $C$ is the Bromwich contour, can be shown to take the form 
+\begin{align}
+\hat{q}_e(\hat{t},\hat{x}) &= \delta\hat{T}_{e\,0}\,\{\left[\cos\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)+\sin\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\sin(\hat{\omega}\,t)\nonumber\\[0.5ex]
+&\phantom{=}+\left[\sin\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)-\cos\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\cos(\hat{\omega}\,t)\}\sin(\hat{k}_0\,\hat{x}).
+\end{align}
+Here, $\hat{q}_e = q_e/(n_e\,T_e\,v_{t\,e})$, where $n_e$ is the equilibrium electron number density at the rational surface, and $v_{t\,e}= (2\,T_e/m_e)^{1/2}= l_e\,\nu_e$. 
+Moreover, $G_r= {\rm Re}[G(\xi_r,\xi_i)]$ and $G_i= {\rm Im}[G(\xi_r,\xi_i)]$
+
+\subsection{Energy Conservation}
+The net parallel electron heat flux in the inner separatrix boundary layer is
+\begin{equation}
+Q_\parallel (\hat{t},\hat{x})= n_e\,T_e\,v_{t\,e}\,\hat{q}_e(\hat{x},\hat{t})\,\delta.
+\end{equation}
+The perpendicular heat flux into the section of the layer that lies between $x=0$ and $x=x$ is
+\begin{align}
+Q_\perp (\hat{t},\hat{x}) &= \frac{\kappa_\perp}{\delta} \int_0^x\delta T_{e\,{\rm in}}(\hat{x},\hat{t})\,dx\nonumber\\[0.5ex]
+&= \frac{\kappa_\perp\,\delta T_{e\,0}}{\hat{\delta}\,\hat{k}_0}\,\cos(\hat{\omega}\,\hat{t})\,\sin(\hat{k}_0\,\hat{x}),
+\end{align}
+where $\kappa_\perp$ is the perpendicular electron thermal conductivity at the rational surface, and $\hat{\delta}=\delta/l_e$. Finally, the  electron thermal energy in the section of the layer is
+\begin{equation}
+{\cal E}(\hat{t},\hat{x})=\frac{1}{2}\int_0^x n_e\,\delta T_e(\hat{x},\hat{t})\,dx\,\delta = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})-\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]\,
+\sin(\hat{k}_0\,\hat{x})
+\end{equation}
+
+Energy conservation in the layer requires that
+\begin{equation}
+\frac{\partial{\cal E}}{\partial t} = Q_\perp-Q_\parallel,
+\end{equation}
+which implies that
+\begin{align}
+\cos\alpha\left(\frac{1}{2}\,\xi_r-\xi_r\,G_r+\xi_i\,G_i\right)+\sin\alpha\,(\xi_i\,G_r+\xi_r\,G_i) &= 0,\\[0.5ex]
+\sin\alpha\left(\frac{1}{2}\,\xi_r-\xi_r\,G_r+\xi_i\,G_i\right)-\cos\alpha\,(\xi_i\,G_r+\xi_r\,G_i)&= \frac{\hat{\kappa}_\perp}{\hat{\delta}^{\,2}\,\hat{k}_0},
+\end{align}
+where
+\begin{equation}
+\hat{\kappa}_\perp =\frac{\kappa_\perp}{n_e\,v_{t\,e}\,l_e}.
+\end{equation}
+Thus, it follows that
+\begin{equation}
+\tan\alpha = \frac{\hat{\omega}/2 -\hat{\omega}\,G_r + G_i}{-G_r-\hat{\omega}\,G_i},
+\end{equation}
 and
-\begin{align}
-F_{n,0}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{n,0}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k},\\[0.5ex]
-F_{T,0}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{T,0}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k},\\[0.5ex]
-F_{n,2}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{n,2}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k},\\[0.5ex]
-F_{T,2}(g,\hat{x})&=\frac{1}{\pi}\int_{0}^\infty K_{T,2}(g,\hat{k})\,\exp\left[-\frac{(\hat{k}\,\hat{\sigma})^2}{2}\right]\cos(\hat{k}\,\hat{x})\,d\hat{k}.
-\end{align}
-Here, we have made use of the easily proved results that if $\hat{k}\rightarrow -\hat{k}$ then $\xi\rightarrow -\xi$, $Z\rightarrow-Z$, $Z_0\rightarrow Z_0$,
-$G\rightarrow G$, and ${\mit\Lambda}_D\rightarrow {\mit\Lambda}_D$.
-
-If there is a unit amplitude particle source, but no energy source, so that $A_0=1$ and $A_2=0$, then Eqs.~(\ref{e41x}), (\ref{e67}), and (\ref{e69}) yield 
-\begin{align}
-\delta\hat{n}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{n,0}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
-&\phantom{=}
- -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{n,0}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy,\\[0.5ex]
-\delta\hat{T}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{T,0}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
-&\phantom{=}
- -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{T,0}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy,
-\end{align}
-where $\gamma>0$.  
-Note  $\delta n_e(\hat{t},-\hat{x})=\delta n_e(\hat{t},\hat{x})$, and $\delta\hat{T}_e(\hat{t},-\hat{x})=\delta \hat{T}_e(\hat{t},\hat{x})$. Here, use has been made of the easily proved results that if $g\rightarrow g^\ast$ then $K_{n,0}\rightarrow K_{n,0}^\ast$, 
-and $K_{T,0}\rightarrow K_{T,0}^\ast$.
-  Once we have determined $\delta\hat{n}_e(\hat{t},\hat{x})$ and $\delta\hat{T}_e(\hat{t},\hat{x})$ then the
-normalized particle flux, $\hat{V}_e(\hat{t},\hat{x})$, and the normalized heat flux, $\hat{q}_e(\hat{t},\hat{x})$ can be obtained from the fluid
-equations, (\ref{econt}) and (\ref{eenergy}). 
-
-On the other hand, if there is a unit amplitude energy source, but no particle source, so that $A_0=0$ and $A_2=1$, then
-\begin{align}
-\delta\hat{n}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{n,2}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
-&\phantom{=}
- -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{n,2}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy,\\[0.5ex]
-\delta\hat{T}_e(\hat{t},\hat{x})&=\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Re}[F_{T,2}(\gamma+{\rm i}\,y,\hat{x})]\,\cos(y\,\hat{t})\,dy\nonumber\\[0.5ex]
-&\phantom{=}
- -\frac{{\rm e}^{\gamma\,\hat{t}}}{\pi}\int_{0}^{\infty}{\rm Im}[F_{T,2}(\gamma+{\rm i}\,y),\hat{x})]\,\sin(y\,\hat{t})\,dy.
-\end{align}
-Here, use has been made of the easily proved results that if $g\rightarrow g^\ast$ then $K_{n,0}\rightarrow K_{n,0}^\ast$, 
-$K_{n,2}\rightarrow K_{n,2}^\ast$, 
-and $K_{T,0}\rightarrow K_{T,2}^\ast$. As before, once we have determined $\delta\hat{n}_e(\hat{t},\hat{x})$ and $\delta\hat{T}_e(\hat{t},\hat{x})$ then the
-normalized particle flux, $\hat{V}_e(\hat{t},\hat{x})$, and the normalized heat flux, $\hat{q}_e(\hat{t},\hat{x})$ can be determined from the fluid
-equations, (\ref{econt}) and (\ref{eenergy}). 
-\fi
+\begin{equation}
+\hat{\delta}^{\,2} = \frac{\hat{\kappa}_\perp}{[(\hat{\omega}/2 - \hat{\omega}\,G_r+G_i)^2 + (-G_r-\hat{\omega}\,G_i)^2]^{1/2}}.
+\end{equation}
 
 \section*{Acknowledgements}
 This research was directly funded by the U.S.\ Department of Energy, Office of Science, Office of Fusion Energy Sciences, under  contract DE-SC0021156. 
@@ -509,13 +585,34 @@ The digital data used in the figures in this paper can be obtained from the auth
 
 \bibitem{krook} P.L.~Bhatnagar, E.P.~Gross and M.~Krook, Phys.\ Rev.\ {\bf 94}, 511 (1954).
 
-\bibitem{rf0} R.~Fitzpatrick, {\em Plasma Physics: An Introduction}, 2nd Edition. (CRC Press, Boca Raton FL, 2022.)
+\bibitem{rf0} R.~Fitzpatrick, {\em Plasma Physics: An Introduction}, 2nd Ed. (CRC Press, Boca Raton FL, 2022.)
 
 \bibitem{fc} B.D.~Fried and S.D.~Conte, {\em The Plasma Dispersion Function}. (Academic Press, New York NY, 1961.)
 
-\bibitem{as} M.~Abramowitz and I.A.~Stegun, {\em Handbook of Mathematical Functions}. (Dover, New York NY, 1965).
+\bibitem{as} M.~Abramowitz and I.A.~Stegun, {\em Handbook of Mathematical Functions}. (Dover, New York NY, 1965.)
+
+\bibitem{fkr} H.P.~Furth,  J.~Killeen and M.N.~Rosenbluth,  Phys.\ Fluids {\bf 6}, 459 (1963).
+
+\bibitem{wesson} J.A.~Wesson, {\em Tokamaks}, 4th Ed. (Oxford University Press, Oxford UK, 2011.)
+
+\bibitem{ruth} P.H.~Rutherford, Phys.\ Fluids {\bf 16}, 1906 (1973).
+
+\bibitem{rf} R. Fitzpatrick, Phys.\ Plasmas {\bf 2}, 825 (1995).
 
 \end{thebibliography}
+
+\begin{figure}
+\centerline{\includegraphics[width=1.0\textwidth]{Island.eps}}
+\caption{True geometry of electron energy transport across a magnetic island. Here, $\zeta= m\,\theta-n\,\phi$, where $\theta$ is a poloidal angle, and $\phi$ a
+toroidal angle.  \label{fig1}}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=1.0\textwidth]{Island1.eps}}
+\caption{Simplified geometry of electron energy transport across a magnetic island. Here, $x$ measures distance along magnetic field-lines.  \label{fig2}}
+\end{figure}
+
+
 
 
 \end{document}
