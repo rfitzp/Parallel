@@ -278,7 +278,7 @@ Equation~(\ref{e55x}) can be rearranged to give
 &\phantom{=}\left.+\left(\delta\bar{T}_e+\bar{S}_2\right)\left(u^2-\frac{1}{2}\right)\right\}\left(\frac{-\xi}{u-\xi}\right)F_M,
 \end{align}
 where
-\begin{equation}
+\begin{equation}\label{exi}
 \xi (g,\hat{k})= \frac{{\rm i}\,(1+g)}{\hat{k}}= \frac{{\rm i}\,(1+g)}{k\,l_e}.
 \end{equation}
 Likewise, the fluid equations, (\ref{e34}), (\ref{e35}), and (\ref{e36}), can be re-expressed in the forms
@@ -313,11 +313,11 @@ Z_1 &= \xi\,(Z_0-I_0) = \xi\,Z_0-\xi,\\[0.5ex]
 Z_2&= \xi\,(Z_1-I_1) =  \xi^2\,Z_0-\xi^2.\label{ez2}
 \end{align}
 Note that 
-\begin{equation}
+\begin{equation}\label{z0}
 Z_0(\xi)= -\xi\,\bar{Z}(\xi),
 \end{equation}
 where
-\begin{equation}
+\begin{equation}\label{z1}
 \bar{Z}(\xi) = \frac{1}{\pi^{1/2}}\int_{-\infty}^\infty \frac{{\rm e}^{-u^2}}{u-\xi}\,du
 \end{equation}
 is related to the plasma dispersion function.\cite{rf0,fc}
@@ -436,23 +436,27 @@ mode resonates with the equilibrium magnetic field at the so-called ``rational s
 safety-factor profile, and $r$ denotes the minor radius of equilibrium magnetic flux-surfaces.\cite{wesson} The tearing mode reconnects magnetic flux at the rational surface, in the process opening up a magnetic island chain, centered on the surface,  which also possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction.\cite{ruth}  Let $W$ be the full radial width of the island chain. 
 
 As is well-known, if $W$ exceeds a fairly small critical width, $W_c$, then the equilibrium electron temperature
-gradient is flattened in the region lying within the island chain's magnetic separatrix. In this case, the perpendicular electron energy flux across the island chain, driven by radial gradients in the electron temperature, is diverted   along magnetic field-lines
-in a thin boundary layer that lies on the island separatrix. See Fig.~\ref{fig1}. Let $\delta$ be the radial width of the boundary layer. The critical island width, $W_c$, is defined as the island width at which $\delta = W$. If
-$W>W_c$ then the electron temperature is flattened by the island chain, and the heat transport across the chain is predominately parallel to magnetic field-lines. On the other hand,  if $W<W_c$ then the electron temperature is unaffected by the island chain, and the heat transport across the chain is predominately perpendicular to magnetic field-lines. We wish to employ the theory developed Sects.~\ref{s2} and \ref{s3} to calculate the critical
-island width at arbitrary collisionality. (In reality, parallel electron heat transport in tokamak plasmas does not lie in the short mean-free-path regime.) We also wish to calculate the critical island width in the case
-in which the heat flow across the island chain oscillates at some frequency $\omega$. 
+gradient is flattened in the region lying within the island chain's magnetic separatrix. In this case, the perpendicular electron energy flux across the island chain, driven by radial gradients in the equilibrium electron temperature, is diverted   along magnetic field-lines
+in a thin boundary layer that lies on the island separatrix. See Fig.~\ref{fig1}. Let $\delta$ be the radial width of the boundary layer.
+
+ The critical island width, $W_c$, is defined as the island width at which $\delta = W$. If
+$W>W_c$ then the electron temperature profile is flattened by the island chain, and the energy transport across the chain is predominately parallel to magnetic field-lines. On the other hand,  if $W<W_c$ then the electron temperature profile is unaffected by the island chain, and the energy transport across the chain is predominately perpendicular to magnetic field-lines.\cite{rf} 
+
+We wish to employ the theory developed Sects.~\ref{s2} and \ref{s3} to calculate the critical
+island width at arbitrary collisionality. (In reality, parallel electron energy transport in tokamak plasmas does not lie in the short mean-free-path regime.) We also wish to calculate the critical island width in the case
+in which the energy flow across the island chain oscillates at some frequency $\omega$. 
 
 Our calculation takes place in the simplified island geometry pictured in Fig.~\ref{fig2}. Here, the separatrix boundary layer has been split into two straight boundary layers which represent the inner
 (in $r$) and outer sides of the magnetic separatrix.  Electron energy flows parallel to magnetic field-lines within these boundary layers. Furthermore, any energy that flows out of the ends of the inner boundary layer is
 fed into the corresponding end of the outer boundary layer, and vice versa. 
 
 \subsection{Connection Length}
-Let $x$ measure distance along magnetic field-lines in the separatrix boundary layers. The equation of the field-lines is\,\cite{rf}
+Let $x_3$ measure distance along magnetic field-lines in the separatrix boundary layers. The equation of the field-lines is\,\cite{rf}
 \begin{equation}
-\frac{dx}{d\zeta} =\frac{R_0\,r_s}{n\,s_s}\,\frac{1}{|r-r_s|},
+\frac{dx_3}{d\zeta} =\frac{R_0\,r_s}{n\,s_s}\,\frac{1}{|r-r_s|},
 \end{equation}
 where $s_s = (d\ln q/\ln s)_{r_s}$ is the magnetic shear at the rational surface, and $R_0$ is the plasma minor radius. Here, $\zeta=m\,\theta-n\,\phi$ is a helical angle. 
- Now, on the magnetic separatrix\,\cite{rf}
+ Now, on the magnetic separatrix,\cite{rf}
 \begin{equation}
 |r-r_s| = \frac{W}{2}\,\sin\left(\frac{\zeta}{2}\right).
 \end{equation}
@@ -462,25 +466,25 @@ Here, the island O-point lies at $\zeta=\pi$, whereas the X-points lie at $\zeta
 \end{equation}
 Hence, the so-called ``connection length", which is defined as the length of the boundary layers parallel to magnetic field-lines, is
 \begin{equation}
-L = \int_0^{2\pi}\frac{dx}{d\zeta}\,d\zeta = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi}{\langle|r-r_s|\rangle} = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi^2}{W}.
+L = \int_0^{2\pi}\frac{dx_3}{d\zeta}\,d\zeta = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi}{\langle|r-r_s|\rangle} = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi^2}{W}.
 \end{equation}
-Here, the island O-point lies at $x=0$, whereas the X-points lie at $x=\pm L/2$. Note that the two ends of the boundary layers lie at the X-points. See Fig.~\ref{fig2}.
+Here, the island O-point lies at $x_3=0$, whereas the X-points lie at $x_3=\pm L/2$. Note that the two ends of the boundary layers lie at the X-points. See Fig.~\ref{fig2}.
 
 \subsection{Temperature Perturbation}
 Consider the inner separatrix boundary layer. Suppose that the perturbed electron temperature on the inner (in $r$) side of the layer is
 \begin{equation}
-\delta T_{e\,{\rm in}}(x,t) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x}{L}\right)\cos(\omega \,t).
+\delta T_{e\,{\rm in}}(t,x_3) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x_3}{L}\right)\cos(\omega \,t).
 \end{equation}
-Suppose that the layer is much thinner than the island, which implies that the perturbed electron temperature is zero inside the island. Thus, the perturbed electron
+Suppose that the layer is much thinner (in $r$) than the island, which implies that the perturbed electron temperature is zero inside the island. Thus, the perturbed electron
 temperature on the outer side of the layer is 
 \begin{equation}
 \delta T_{e\,{\rm out}}(t,x) =0.
 \end{equation}
 Finally, let 
 \begin{equation}
-\delta T_{e\,}(t,x) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x}{L}\right)\cos(\omega \,t-\alpha)
+\delta T_{e\,}(t,x_3) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x_3}{L}\right)\cos(\omega \,t-\alpha)
 \end{equation}
-be the average perturbed electron temperature in the layer. Here, $\alpha$ represents a phase-lag between the average temperature and the driving temperature on the
+be the average perturbed electron temperature within the layer. Here, $\alpha$ represents a phase-lag between the average temperature and the driving temperature on the
 inner side of the layer. Moreover, $\omega>0$ is the oscillation frequency of the temperature perturbation. Finally, $\delta T_{e\,0}$ represents the small temperature difference 
 between the middle  and the two ends of the layer that is responsible for driving the flow of energy around the island. Note that the perturbed temperature in the outer boundary layer is
 minus that in the inner boundary layer. 
@@ -488,12 +492,12 @@ minus that in the inner boundary layer.
 \subsection{Parallel Electron Heat Flux}
 The normalized Fourier-Laplace transformed perturbed electron temperature in the inner boundary layer is
 \begin{align}
-\delta\bar{T}_e(g,\hat{k}) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\int_0^\infty \delta \hat{T}_e(\hat{x},\hat{t})\,{\rm e}^{-g\,\hat{t}}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x}
+\delta\bar{T}_e(g,\hat{k}) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\int_0^\infty \delta \hat{T}_e(\hat{x},\hat{t})\,{\rm e}^{-g\,\hat{t}}\,d\hat{t}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x}
 \nonumber\\[0.5ex]
-&= \delta\hat{T}_{e\,0}\left[\delta (\hat{k}-\hat{k_0})+ \delta(\hat{k}+\hat{k}_0)\right]\frac{1}{2}\left(
+&=\sqrt{\frac{\pi}{2}}\, \delta\hat{T}_{e\,0}\left[\delta (\hat{k}-\hat{k_0})+ \delta(\hat{k}+\hat{k}_0)\right]\frac{1}{2}\left(
 \frac{{\rm e}^{-{\rm i}\,\alpha}}{g-{\rm i}\,\hat{\omega}}+ \frac{{\rm e}^{\,{\rm i}\,\alpha}}{g+\hat{\rm i}\,\hat{\omega}}\right).
 \end{align}
-Here, $\hat{x}=x/l_e$, $\hat{L}=L/l_e$, $\hat{t}=\nu_e\,t$, $\hat{\omega}=\omega/\nu_e$, $\delta \hat{T} = \delta T_e/T_e$, $\delta \hat{T}_{e\,0} = \delta T_{e\,0}/T_e$, and
+Here, $\hat{x}=x_3/l_e$, $\hat{L}=L/l_e$, $\hat{t}=\nu_e\,t$, $\hat{\omega}=\omega/\nu_e$, $\delta \hat{T} = \delta T_e/T_e$, $\delta \hat{T}_{e\,0} = \delta T_{e\,0}/T_e$, and
 $\hat{k}_0=\pi/\hat{L}$. Moreover, $\nu_e$, $l_e$, and $T_e$ are the total electron collision frequency, the electron mean-free-path between collisions, and the equilibrium electron temperarture,
 respectively, at the rational surface. 
 
@@ -501,11 +505,11 @@ Now, according to Eq.~(\ref{e55}), the Fourier-Laplace transformed normalized pa
 \begin{equation}
 \bar{q}_e(g,\hat{k}) = \xi\,G(\xi)\,\delta\bar{T}_e(g,\hat{k}),
 \end{equation}
-where
+where [see Eq.~(\ref{exi})]
 \begin{equation}
 \xi= \frac{{\rm i}\,(1+g)}{\hat{k}},
 \end{equation}
-and the function $G(\xi)$ is defined in Eq.~(\ref{e56}). 
+and the function $G(\xi)$ is defined in Eqs.~(\ref{z0}), (\ref{z1}), and (\ref{e56}). 
 
 Let
 \begin{equation}
@@ -528,11 +532,11 @@ The time-asymptotic normalized parallel heat flux in real space,
 \end{equation}
 where $C$ is the Bromwich contour, can be shown to take the form 
 \begin{align}
-\hat{q}_e(\hat{t},\hat{x}) &= \delta\hat{T}_{e\,0}\,\{\left[\cos\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)+\sin\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\sin(\hat{\omega}\,t)\nonumber\\[0.5ex]
+\hat{q}_e(\hat{t},\hat{x}) &= \delta\hat{T}_{e\,0}\,\{\left[-\cos\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)+\sin\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\sin(\hat{\omega}\,t)\nonumber\\[0.5ex]
 &\phantom{=}+\left[\sin\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)-\cos\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\cos(\hat{\omega}\,t)\}\sin(\hat{k}_0\,\hat{x}).
 \end{align}
 Here, $\hat{q}_e = q_e/(n_e\,T_e\,v_{t\,e})$, where $n_e$ is the equilibrium electron number density at the rational surface, and $v_{t\,e}= (2\,T_e/m_e)^{1/2}= l_e\,\nu_e$. 
-Moreover, $G_r= {\rm Re}[G(\xi_r,\xi_i)]$ and $G_i= {\rm Im}[G(\xi_r,\xi_i)]$
+Moreover, $G_r= {\rm Re}[G(\xi_r,\xi_i)]$ and $G_i= {\rm Im}[G(\xi_r,\xi_i)]$.
 
 \subsection{Energy Conservation}
 The net parallel electron heat flux in the inner separatrix boundary layer is
@@ -545,12 +549,13 @@ Q_\perp (\hat{t},\hat{x}) &= \frac{\kappa_\perp}{\delta} \int_0^x\delta T_{e\,{\
 &= \frac{\kappa_\perp\,\delta T_{e\,0}}{\hat{\delta}\,\hat{k}_0}\,\cos(\hat{\omega}\,\hat{t})\,\sin(\hat{k}_0\,\hat{x}),
 \end{align}
 where $\kappa_\perp$ is the perpendicular electron thermal conductivity at the rational surface, and $\hat{\delta}=\delta/l_e$. Finally, the  electron thermal energy in the section of the layer is
-\begin{equation}
-{\cal E}(\hat{t},\hat{x})=\frac{1}{2}\int_0^x n_e\,\delta T_e(\hat{x},\hat{t})\,dx\,\delta = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})-\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]\,
-\sin(\hat{k}_0\,\hat{x})
-\end{equation}
+\begin{align}
+{\cal E}(\hat{t},\hat{x})&=\frac{1}{2}\int_0^x n_e\,\delta T_e(\hat{x},\hat{t})\,dx\,\delta\nonumber\\[0.5ex]
+& = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})-\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]\,
+\sin(\hat{k}_0\,\hat{x}).
+\end{align}
 
-Energy conservation in the layer requires that
+Energy conservation in the layer requires that [see Eq.~(\ref{eenergy})]
 \begin{equation}
 \frac{\partial{\cal E}}{\partial t} = Q_\perp-Q_\parallel,
 \end{equation}
