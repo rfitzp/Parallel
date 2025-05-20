@@ -13,7 +13,6 @@
 *.nc
 **/.DS_Store
 *.txt
-*.fig
 *.fig.bak
 *.doctree
 *.pickle

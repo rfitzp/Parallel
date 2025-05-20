@@ -40,7 +40,7 @@ F(v) = \frac{\exp(-v^2/v_{t\,e}^{\,2})}{\pi^{1/2}\,v_{t\,e}},
 \end{equation}
 and 
 $|f/F|\ll 1$. Here,  $n_e$ is the unperturbed electron number density, 
-\begin{equation}
+\begin{equation}\label{vte}
 v_{t\,e} = \sqrt{\frac{2\,T_e}{m_e}}
 \end{equation}
 the electron thermal velocity, $m_e$  the electron mass,  and $T_e$ the unperturbed electron temperature (measured in energy units). Note that we are assuming that the electron distribution function remains relatively close to a Maxwellian distribution. 
@@ -164,12 +164,12 @@ q_{\parallel\,3}(t,x_3) = \frac{1}{2}\,m_e\,n_e\int_{-\infty}^\infty v_3\left(v_
 \section{Fourier-Laplace Transform Solution of Electron Kinetic Equation}\label{s3}
 \subsection{Normalization}
 Let
-\begin{align}
+\begin{align}\label{enu}
 \nu_e= \nu_{ee}+\nu_{ei}
 \end{align}
 be the total electron collision frequency, and
 let
-\begin{equation}
+\begin{equation}\label{el}
 l_e= \frac{v_{t\,e}}{\nu_e}
 \end{equation}
 be the electron mean-free-path between collisions. 
@@ -231,7 +231,6 @@ Finally, taking $2\,\int_{-\infty}^\infty (u^2-1/2)\,(\ref{e37a})\,du$, we obtai
 \begin{equation}\label{eenergy}
 \frac{\partial\delta T_e}{\partial\hat{t}} +2\,\frac{\partial}{\partial\hat{x}}(\hat{V}_e+\hat{q}_e)= \hat{S}_2.
 \end{equation}
-
 
 \subsection{Fourier-Laplace Transformation}
 Let
@@ -398,11 +397,11 @@ G(\xi) = \frac{(\xi^2-1)-(\xi^2-3/2)\,Z_0}{2\,\xi^2-(2\,\xi^2-1)\,Z_0}.
 Note that the electron heat flux only depends on the perturbed electron temperature, and is independent of both the
 perturbed electron number density and the electron drift velocity. 
 It follows from Eqs.~(\ref{e63x}) and (\ref{e64x}) that
-\begin{equation}
+\begin{equation}\label{lmfp}
 G(\xi) =-{\rm i}\,\frac{{\rm sgn}(\xi_i)}{\pi^{1/2}\,\xi}+{\cal O}(1)
 \end{equation}
 in the limit $|\xi|\ll 1$, and 
-\begin{equation}
+\begin{equation}\label{smfp}
 G(\xi)= \frac{3}{4\,\xi^2} + \frac{3}{2\,\xi^4} + {\cal O}(\xi^{-6}) 
 \end{equation}
 in the limit $|\xi|\gg 1$. 
@@ -431,12 +430,13 @@ directly in terms of the particle and energy sources.
 \section{Electron Energy Transport across a Magnetic Island Chain}
 
 \subsection{Introduction}
-Consider a tearing mode  in a tokamak plasma.\cite{fkr} Suppose that the mode possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction. As is well-known, the
+Consider a tearing mode  in a tokamak plasma.\cite{fkr,fitz} Suppose that the mode possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction. 
+(Here, $m$ and $n$ are positive integers.) As is well-known, the
 mode resonates with the equilibrium magnetic field at the so-called ``rational surface'' whose minor radius, $r_s$, satisfies $q(r_s)=m/n$, where $q(r)$ is the
-safety-factor profile, and $r$ denotes the minor radius of equilibrium magnetic flux-surfaces.\cite{wesson} The tearing mode reconnects magnetic flux at the rational surface, in the process opening up a magnetic island chain, centered on the surface,  which also possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction.\cite{ruth}  Let $W$ be the full radial width of the island chain. 
+safety-factor profile, and $r$ denotes the minor radius of equilibrium magnetic flux-surfaces.\cite{wesson,fitz} The tearing mode reconnects magnetic flux at the rational surface, in the process opening up a magnetic island chain, centered on the surface,  which also possesses $m$ periods in the poloidal direction, and $n$ periods in the toroidal direction.\cite{ruth}  Let $W$ be the full radial width of the island chain. 
 
-As is well-known, if $W$ exceeds a fairly small critical width, $W_c$, then the equilibrium electron temperature
-gradient is flattened in the region lying within the island chain's magnetic separatrix. In this case, the perpendicular electron energy flux across the island chain, driven by radial gradients in the equilibrium electron temperature, is diverted   along magnetic field-lines
+As is well-known, if $W$ exceeds a fairly small critical width, $W_c$, then the radial equilibrium electron temperature
+gradient is flattened in the region lying within the island chain's magnetic separatrix.\cite{rf} In this case, the perpendicular electron energy flux across the island chain, driven by radial gradients in the equilibrium electron temperature, is diverted   parallel to magnetic field-lines
 in a thin boundary layer that lies on the island separatrix. See Fig.~\ref{fig1}. Let $\delta$ be the radial width of the boundary layer.
 
  The critical island width, $W_c$, is defined as the island width at which $\delta = W$. If
@@ -455,12 +455,13 @@ Let $x_3$ measure distance along magnetic field-lines in the separatrix boundary
 \begin{equation}
 \frac{dx_3}{d\zeta} =\frac{R_0\,r_s}{n\,s_s}\,\frac{1}{|r-r_s|},
 \end{equation}
-where $s_s = (d\ln q/\ln s)_{r_s}$ is the magnetic shear at the rational surface, and $R_0$ is the plasma minor radius. Here, $\zeta=m\,\theta-n\,\phi$ is a helical angle. 
+where $s_s = (d\ln q/\ln s)_{r_s}$ is the magnetic shear at the rational surface, and $R_0$ is the plasma minor radius. Here, $\zeta=m\,\theta-n\,\phi$ is a helical angle, $\theta$ is
+a poloidal angle, and $\phi$ is a toroidal angle. 
  Now, on the magnetic separatrix,\cite{rf}
 \begin{equation}
 |r-r_s| = \frac{W}{2}\,\sin\left(\frac{\zeta}{2}\right).
 \end{equation}
-Here, the island O-point lies at $\zeta=\pi$, whereas the X-points lie at $\zeta=0$, $2\pi$. The average value of $|r-r_s|$ in the boundary layers is
+Note that the island O-point lies at $\zeta=\pi$, whereas the X-points lie at $\zeta=0$, $2\pi$. (See Fig.~\ref{fig1}.) The average value of $|r-r_s|$ in the boundary layers is
 \begin{equation}
 \langle |r-r_s|\rangle  =\frac{W}{2}\,\int_0^\pi \sin\left(\frac{\zeta}{2}\right)\,\frac{d\zeta}{\pi}= \frac{W}{\pi}.
 \end{equation}
@@ -470,19 +471,19 @@ L = \int_0^{2\pi}\frac{dx_3}{d\zeta}\,d\zeta = \frac{R_0\,r_s}{n\,s_s}\,\frac{2\
 \end{equation}
 Here, the island O-point lies at $x_3=0$, whereas the X-points lie at $x_3=\pm L/2$. Note that the two ends of the boundary layers lie at the X-points. See Fig.~\ref{fig2}.
 
-\subsection{Temperature Perturbation}
+\subsection{Electron Temperature Perturbation}
 Consider the inner separatrix boundary layer. Suppose that the perturbed electron temperature on the inner (in $r$) side of the layer is
 \begin{equation}
-\delta T_{e\,{\rm in}}(t,x_3) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x_3}{L}\right)\cos(\omega \,t).
+\delta T_{e\,{\rm in}}(t,x_3) =\delta T_{e\,0}\,\cos(\omega \,t)\,\cos\left(\pi\,\frac{x_3}{L}\right).
 \end{equation}
-Suppose that the layer is much thinner (in $r$) than the island, which implies that the perturbed electron temperature is zero inside the island. Thus, the perturbed electron
+Suppose that the layer is much thinner (in $r$) than the island (i.e., $\delta\ll W$), which implies that the perturbed electron temperature is zero inside the island. Thus, the perturbed electron
 temperature on the outer side of the layer is 
 \begin{equation}
-\delta T_{e\,{\rm out}}(t,x) =0.
+\delta T_{e\,{\rm out}}(t,x_3) =0.
 \end{equation}
 Finally, let 
 \begin{equation}
-\delta T_{e\,}(t,x_3) =\delta T_{e\,0}\,\cos\left(\pi\,\frac{x_3}{L}\right)\cos(\omega \,t-\alpha)
+\delta T_{e\,}(t,x_3) =\delta T_{e\,0}\,\cos(\omega \,t-\alpha)\,\cos\left(\pi\,\frac{x_3}{L}\right)
 \end{equation}
 be the average perturbed electron temperature within the layer. Here, $\alpha$ represents a phase-lag between the average temperature and the driving temperature on the
 inner side of the layer. Moreover, $\omega>0$ is the oscillation frequency of the temperature perturbation. Finally, $\delta T_{e\,0}$ represents the small temperature difference 
@@ -490,15 +491,15 @@ between the middle  and the two ends of the layer that is responsible for drivin
 minus that in the inner boundary layer. 
 
 \subsection{Parallel Electron Heat Flux}
-The normalized Fourier-Laplace transformed perturbed electron temperature in the inner boundary layer is
+The normalized Fourier-Laplace transformed perturbed electron temperature in the inner boundary layer is [see Eq.~(\ref{e41x})]
 \begin{align}
-\delta\bar{T}_e(g,\hat{k}) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\int_0^\infty \delta \hat{T}_e(\hat{x},\hat{t})\,{\rm e}^{-g\,\hat{t}}\,d\hat{t}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x}
+\delta\bar{T}_e(g,\hat{k}) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\int_0^\infty \delta \hat{T}_e(\hat{t},\hat{x})\,{\rm e}^{-g\,\hat{t}}\,d\hat{t}\right){\rm e}^{-{\rm i}\,\hat{k}\,\hat{x}}\,d\hat{x}
 \nonumber\\[0.5ex]
-&=\sqrt{\frac{\pi}{2}}\, \delta\hat{T}_{e\,0}\left[\delta (\hat{k}-\hat{k_0})+ \delta(\hat{k}+\hat{k}_0)\right]\frac{1}{2}\left(
-\frac{{\rm e}^{-{\rm i}\,\alpha}}{g-{\rm i}\,\hat{\omega}}+ \frac{{\rm e}^{\,{\rm i}\,\alpha}}{g+\hat{\rm i}\,\hat{\omega}}\right).
+&=\sqrt{\frac{\pi}{2}}\, \delta\hat{T}_{e\,0}\,\frac{1}{2}\left(
+\frac{{\rm e}^{-{\rm i}\,\alpha}}{g-{\rm i}\,\hat{\omega}}+ \frac{{\rm e}^{\,{\rm i}\,\alpha}}{g+\hat{\rm i}\,\hat{\omega}}\right)\left[\delta (\hat{k}-\hat{k_0})+ \delta(\hat{k}+\hat{k}_0)\right]
 \end{align}
-Here, $\hat{x}=x_3/l_e$, $\hat{L}=L/l_e$, $\hat{t}=\nu_e\,t$, $\hat{\omega}=\omega/\nu_e$, $\delta \hat{T} = \delta T_e/T_e$, $\delta \hat{T}_{e\,0} = \delta T_{e\,0}/T_e$, and
-$\hat{k}_0=\pi/\hat{L}$. Moreover, $\nu_e$, $l_e$, and $T_e$ are the total electron collision frequency, the electron mean-free-path between collisions, and the equilibrium electron temperarture,
+Here, $\hat{x}=x_3/l_e$, $\hat{L}=L/l_e$, $\hat{t}=\nu_e\,t$, $\hat{\omega}=\omega/\nu_e$, $\delta \hat{T}_e = \delta T_e/T_e$, $\delta \hat{T}_{e\,0} = \delta T_{e\,0}/T_e$, and
+$\hat{k}_0=\pi/\hat{L}$. Moreover, $\nu_e$, $l_e$, and $T_e$ are the total electron collision frequency [see Eq.~(\ref{enu})], the electron mean-free-path between collisions [see Eq.~(\ref{el})], and the equilibrium electron temperarture,
 respectively, at the rational surface. 
 
 Now, according to Eq.~(\ref{e55}), the Fourier-Laplace transformed normalized parallel electron heat flux in the inner boundary layer is
@@ -513,7 +514,7 @@ and the function $G(\xi)$ is defined in Eqs.~(\ref{z0}), (\ref{z1}), and (\ref{e
 
 Let
 \begin{equation}
-G(\xi) = G_r(\xi_r,\xi_i) + {\rm i}\,(\xi_r,\xi_i),
+G(\xi) = G_r(\xi_r,\xi_i) + {\rm i}\,G_i(\xi_r,\xi_i),
 \end{equation}
 where
 \begin{align}
@@ -532,30 +533,31 @@ The time-asymptotic normalized parallel heat flux in real space,
 \end{equation}
 where $C$ is the Bromwich contour, can be shown to take the form 
 \begin{align}
-\hat{q}_e(\hat{t},\hat{x}) &= \delta\hat{T}_{e\,0}\,\{\left[-\cos\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)+\sin\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\sin(\hat{\omega}\,t)\nonumber\\[0.5ex]
+\hat{q}_e(\hat{t},\hat{x}) &= \delta\hat{T}_{e\,0}\,\{-\left[\cos\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)+\sin\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\sin(\hat{\omega}\,t)\nonumber\\[0.5ex]
 &\phantom{=}+\left[\sin\alpha\,(-\xi_r\,G_r+\xi_i\,G_i)-\cos\alpha\,(\xi_i\,G_r+\xi_r\,G_i)\right]\cos(\hat{\omega}\,t)\}\sin(\hat{k}_0\,\hat{x}).
 \end{align}
-Here, $\hat{q}_e = q_e/(n_e\,T_e\,v_{t\,e})$, where $n_e$ is the equilibrium electron number density at the rational surface, and $v_{t\,e}= (2\,T_e/m_e)^{1/2}= l_e\,\nu_e$. 
+Here, $\hat{q}_e = q_e/(n_e\,T_e\,v_{t\,e})$, where $n_e$ is the equilibrium electron number density at the rational surface, and $v_{t\,e}= (2\,T_e/m_e)^{1/2}= l_e\,\nu_e$. [See Eqs.~(\ref{vte}) and (\ref{el})]. 
 Moreover, $G_r= {\rm Re}[G(\xi_r,\xi_i)]$ and $G_i= {\rm Im}[G(\xi_r,\xi_i)]$.
 
-\subsection{Energy Conservation}
-The net parallel electron heat flux in the inner separatrix boundary layer is
+\subsection{Electron Energy Conservation}
+The net parallel electron energy flux (per unit toroidal distance) in the inner separatrix boundary layer is
 \begin{equation}
-Q_\parallel (\hat{t},\hat{x})= n_e\,T_e\,v_{t\,e}\,\hat{q}_e(\hat{x},\hat{t})\,\delta.
+Q_\parallel (\hat{t},\hat{x})= n_e\,T_e\,v_{t\,e}\,\hat{q}_e(\hat{t},\hat{x})\,\delta.
 \end{equation}
-The perpendicular heat flux into the section of the layer that lies between $x=0$ and $x=x$ is
+The perpendicular energy flux  (per unit toroidal distance)  into the section of the layer that lies between $x_3=0$ and $x_3=x_3$ is
 \begin{align}
-Q_\perp (\hat{t},\hat{x}) &= \frac{\kappa_\perp}{\delta} \int_0^x\delta T_{e\,{\rm in}}(\hat{x},\hat{t})\,dx\nonumber\\[0.5ex]
+Q_\perp (\hat{t},\hat{x}) &= \frac{\kappa_\perp}{\delta} \int_0^{x_3}\delta T_{e\,{\rm in}}(\hat{t},\hat{x})\,dx_3\nonumber\\[0.5ex]
 &= \frac{\kappa_\perp\,\delta T_{e\,0}}{\hat{\delta}\,\hat{k}_0}\,\cos(\hat{\omega}\,\hat{t})\,\sin(\hat{k}_0\,\hat{x}),
 \end{align}
-where $\kappa_\perp$ is the perpendicular electron thermal conductivity at the rational surface, and $\hat{\delta}=\delta/l_e$. Finally, the  electron thermal energy in the section of the layer is
+where $\kappa_\perp$ is the perpendicular electron thermal conductivity at the rational surface, and $\hat{\delta}=\delta/l_e$. Finally, the  electron thermal energy  (per unit toroidal distance) contained in the section of the layer is
 \begin{align}
-{\cal E}(\hat{t},\hat{x})&=\frac{1}{2}\int_0^x n_e\,\delta T_e(\hat{x},\hat{t})\,dx\,\delta\nonumber\\[0.5ex]
-& = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})-\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]\,
+{\cal E}(\hat{t},\hat{x})&=\frac{1}{2}\int_0^{x_3} n_e\,\delta T_e(\hat{t},\hat{x})\,dx_3\,\delta\nonumber\\[0.5ex]
+& = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}_0}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})-\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]
 \sin(\hat{k}_0\,\hat{x}).
 \end{align}
 
-Energy conservation in the layer requires that [see Eq.~(\ref{eenergy})]
+In the absence of a density source (i.e., $\bar{S}_0=0$), and assuming that the Debye length is extremely small (i.e., ${\mit\Lambda}_D\gg 1$), the Fourier-Laplace transformed fluid equations, (\ref{e57})--(\ref{e59}), imply that $\delta\bar{n}_e=\bar{V}_e=0$. Hence, the Fourier-Laplace transformed energy conservation equation, (\ref{e59}), yields 
+ [see Eq.~(\ref{eenergy})]
 \begin{equation}
 \frac{\partial{\cal E}}{\partial t} = Q_\perp-Q_\parallel,
 \end{equation}
@@ -569,13 +571,204 @@ where
 \hat{\kappa}_\perp =\frac{\kappa_\perp}{n_e\,v_{t\,e}\,l_e}.
 \end{equation}
 Thus, it follows that
-\begin{equation}
+\begin{equation}\label{alpha}
 \tan\alpha = \frac{\hat{\omega}/2 -\hat{\omega}\,G_r + G_i}{-G_r-\hat{\omega}\,G_i},
 \end{equation}
 and
-\begin{equation}
+\begin{equation}\label{delta}
 \hat{\delta}^{\,2} = \frac{\hat{\kappa}_\perp}{[(\hat{\omega}/2 - \hat{\omega}\,G_r+G_i)^2 + (-G_r-\hat{\omega}\,G_i)^2]^{1/2}}.
 \end{equation}
+
+\subsection{Short Mean-Free-Path Limit}
+Consider the short mean-free-path limit $|\xi|\gg 1$, which implies that
+\begin{equation}
+L\gg \frac{l_e}{(1+\omega^2/\nu_e^{\,2})^{1/2}},
+\end{equation}
+Here, the term on the right-hand side of the previous equations is the effective mean-free-path of electrons in the separatrix boundary layer. According to Eq.~(\ref{smfp}), in the limit
+$|\xi|\gg 1$, 
+\begin{equation}
+G(\xi)\simeq \frac{3}{4\,\xi^2},
+\end{equation}
+which gives
+\begin{align}
+G_r &\simeq  -\frac{3}{4}\,\frac{(1-\hat{\omega}^2)}{(1+\omega^2)^2}\,\hat{k}_0^{\,2},\\[0.5ex]
+G_i &\simeq -\frac{3}{2}\,\frac{\hat{\omega}}{(1+\hat{\omega}^2)^2}\,\hat{k}_0^{\,2},
+\end{align}
+Hence, Eqs.~(\ref{alpha}) and (\ref{delta}) yield
+\begin{align}\label{al}
+\tan\alpha&\simeq \frac{2}{3}\,\frac{\hat{\omega}\,(1+\hat{\omega}^{\,2})}{\hat{k}_0^{\,2}},\\[0.5ex]
+\hat{\delta}^{\,2} &\simeq \frac{\hat{\kappa}_\perp}{[\hat{\omega}^2/4 + (9/16)\,\hat{k}_0^{\,4}/(1+\hat{\omega}^2)^2]^{1/2}}.\label{del}
+\end{align}
+
+\subsubsection{Zero-Frequency Limit}
+Consider the zero-frequency limit in which $\omega=0$. In this case, Eqs.~(\ref{al}) and (\ref{del}) imply that $\alpha=0$ (i.e., there is no phase lag between the average
+electron temperature in the inner separatrix boundary layer and the driving temperature on the inner side of the layer), and
+\begin{equation}
+\hat{\delta}^{\,2} = \frac{4}{3}\,\frac{\hat{\kappa}_\perp}{\hat{k}_0^{\,2}}.
+\end{equation}
+The previous equation can be rearranged to give
+\begin{equation}\label{e117}
+\frac{\delta}{W} = \left(\frac{W_{c\,0}}{W}\right)^2,
+\end{equation}
+where\,\cite{rf}
+\begin{equation}
+\frac{W_{c\,0}}{r_s} =
+\sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel\,0}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
+\end{equation}
+and $\epsilon_s=r_s/R_0$. Here, 
+\begin{equation}
+\kappa_{\parallel\,0} = \frac{3}{4}\,n_e\,v_{t\,e}\,l_e
+\end{equation}
+is the zero-frequency, short mean-free-path electron parallel thermal conductivity.\cite{fitz,brag} It is clear from Eq.~(\ref{e117}) that if the island width, $W$,
+exceeds the critical value $W_{c\,0}$ then the separatrix boundary layer is thinner than the island (i.e., $\delta\ll W$). Thus, we
+can identify $W_{c\,0}$ as the critical island width above which the electron temperature profile is flattened inside the island separatrix
+in the zero-frequency, short mean-free-path  limit.
+
+\subsubsection{Low-Frequency Limit}
+Consider the low-frequency limit in which
+\begin{equation}
+\hat{\omega}\,(1+\hat{\omega}^2)\ll \frac{3}{2}\,\hat{k}_0^{\,2}.
+\end{equation}
+ In this case, Eqs.~(\ref{al}) and (\ref{del}) imply that $\alpha\ll 1$, and 
+ \begin{equation}
+ \frac{\delta}{W} = \left(\frac{W_{c\,1}}{W}\right)^2,
+\end{equation}
+where\,\cite{rf}
+\begin{equation}
+\frac{W_{c\,1}}{r_s} =
+\sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel\,1}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
+\end{equation}
+and 
+\begin{equation}
+\kappa_{\parallel\,1} = \frac{3}{4}\,\frac{n_e\,v_{t\,e}\,l_e}{1+\omega^2/\nu_e^{\,2}}.
+\end{equation}
+Here, $\kappa_{\parallel\,1}$ is the low-frequency, short mean-free-path electron parallel thermal conductivity. Note that the effective
+electron thermal conductivity is reduced in the limit in which $\omega\gg \nu_e$.  Thus, we
+can identify $W_{c\,1}$ as the critical island width above which the electron temperature profile is flattened inside the island separatrix
+in the low-frequency, short mean-free-path limit.
+
+\subsubsection{High-Frequency Limit}
+Consider the high-frequency limit in which
+\begin{equation}
+\hat{\omega}\,(1+\hat{\omega}^2)\gg \frac{3}{2}\,\hat{k}_0^{\,2}.
+\end{equation}
+ In this case, Eqs.~(\ref{al}) and (\ref{del}) imply that $\alpha\simeq \pi/2$, and 
+ \begin{equation}
+ \frac{\delta}{W} = \frac{W_{c\,2}}{W},
+ \end{equation}
+ where
+ \begin{equation}
+ \frac{W_{c\,2}}{r_s} = \left(\frac{2\,\kappa_\perp}{n_e\,r_s^{\,2}\,\omega}\right)^{1/2}.
+ \end{equation}
+Thus, we
+can identify $W_{c\,2}$ as the critical island width above which the electron temperature profile is flattened inside the island separatrix
+in the  high-frequency, short mean-free-path limit.
+
+\subsubsection{General Case}
+In the general case, it is easily demonstrated that
+\begin{equation}
+\tan\alpha  = \frac{W_{c\,1}^{\,4}}{W_{c\,2}^{\,2}\,W^2},
+\end{equation}
+and
+\begin{equation}
+\frac{\delta}{W} = \left[\left(\frac{W}{W_{c\,2}}\right)^4 + \left(\frac{W}{W_{c\,1}}\right)^8\right]^{-1/4}.
+\end{equation}
+The critical island width, $W_c$,  at which $W=\delta$, satisfies
+\begin{equation}
+\left(\frac{W_c}{W_{c\,2}}\right)^4 + \left(\frac{W_c}{W_{c\,1}}\right)^8= 1,
+\end{equation}
+which yields 
+\begin{equation}
+W_c= W_{c\,1}\left\{-\frac{1}{2}
+\left(\frac{W_{c\,1}}{W_{c\,2}}\right)^4
++\left[1+\frac{1}{4}\left(\frac{W_{c\,1}}{W_{c\,2}}\right)^8\right]
+\right\}^{1/4}.
+\end{equation}
+Clearly, $W_c$ is the lesser of $W_{c\,1}$ and $W_{c\,2}$. 
+
+\subsection{Long Mean-Free-Path Limit}
+Consider the long mean-free-path limit 
+ $|\xi|\ll 1$, which implies that
+\begin{equation}
+L\ll \frac{l_e}{(1+\omega^2/\nu_e^{\,2})^{1/2}},
+\end{equation}
+According to Eq.~(\ref{lmfp}), in the limit $|\xi|\ll 1$, 
+\begin{equation}
+G(\xi) \simeq -\frac{{\rm i}}{\pi^{1/2}\,\xi},
+\end{equation}
+which gives
+\begin{align}
+G_r&\simeq -\frac{\hat{k}_0}{\pi^{1/2}\,(1+\hat{\omega}^2)},\\[0.5ex]
+G_i &\simeq \hat{\omega}\,G_r.
+\end{align}
+Hence, Eqs.~(\ref{alpha}) and (\ref{delta}) yield
+\begin{align}\label{e135}
+\tan\alpha&\simeq \frac{\pi^{1/2}\,\hat{\omega}}{2\,\hat{k}_0},\\[0.5ex]
+\hat{\delta}^{\,2}&\simeq \frac{\hat{\kappa}_\perp}{(\hat{\omega}^2/4 + \hat{k}_0^{\,2}/\pi)^{1/2}}.\label{e136}
+\end{align}
+
+\subsubsection{Low-Frequency Limit}
+Consider the low-frequency limit in which
+\begin{equation}
+\hat{\omega}\ll \frac{2\,\hat{k}_0}{\pi^{1/2}},
+\end{equation}
+In this case, Eqs.~(\ref{e135}) and (\ref{e136}) imply that $\alpha\ll 1$, and
+\begin{equation}
+\frac{\delta}{W}= \left(\frac{W_{c\,3}}{W}\right)^{3/2},
+\end{equation}
+where\,\cite{rf}
+\begin{equation}
+\frac{W_{c\,3}}{r_s} =
+2^{1/3}\,\pi^{1/2}\left(\frac{\kappa_\perp}{n_e\,v_{t\,e}\,r_s}\right)^{1/3}\frac{1}{(n\,s_s\,\epsilon_s)^{1/3}}.
+\end{equation}
+Thus, we
+can identify $W_{c\,3}$ as the critical island width above which the electron temperature profile is flattened inside the island separatrix
+in the  low-frequency, long mean-free-path limit. However, we can also write
+\begin{equation}
+\frac{W_{c\,3}}{r_s} =
+\sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel\,3}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
+\end{equation}
+where
+\begin{equation}
+\kappa_{\parallel\,3} =\frac{n_e\,v_{t\,e}\,L}{\pi^{3/2}}
+\end{equation}
+is the low-frequency, long mean-free-path electron parallel thermal conductivity. Here, $L$ is evaluated with $W=W_{c\,3}$. 
+
+\subsubsection{Low-Frequency Limit}
+Consider the high-frequency limit in which
+\begin{equation}
+\hat{\omega}\gg \frac{2\,\hat{k}_0}{\pi^{1/2}},
+\end{equation}
+In this case, Eqs.~(\ref{e135}) and (\ref{e136}) imply that $\alpha\simeq \pi/2$, and
+\begin{equation}
+ \frac{\delta}{W} = \frac{W_{c\,2}}{W}.
+ \end{equation}
+Thus, we
+can identify $W_{c\,2}$ as the critical island width above which the electron temperature profile is flattened inside the island separatrix
+in the  high-frequency, long mean-free-path limit.
+
+\subsubsection{General Case}
+In the general case, it is easily demonstrated that
+\begin{equation}
+\tan\alpha  = \frac{W_{c\,3}^{\,3}}{W_{c\,2}^{\,2}\,W},
+\end{equation}
+and
+\begin{equation}
+\frac{\delta}{W} = \left[\left(\frac{W}{W_{c\,2}}\right)^4 + \left(\frac{W}{W_{c\,3}}\right)^6\right]^{-1/4}.
+\end{equation}
+The critical island width, $W_c$,  at which $W=\delta$, satisfies
+\begin{equation}
+\left(\frac{W_c}{W_{c\,2}}\right)^4 + \left(\frac{W_c}{W_{c\,3}}\right)^6= 1.
+\end{equation}
+Clearly, $W_c$ is the lesser of $W_{c\,2}$ and $W_{c\,3}$. 
+
+\subsection{General Case}
+In the general case, in which we make no assumptions regarding the mean-free-path and the frequency, it is easily demonstrated that
+\begin{align}
+\tan\alpha& = \frac{\hat{\omega}/2 -\hat{\omega}\,G_r + G_i}{-G_r-\hat{\omega}\,G_i},\\[0.5ex]
+\frac{W_c}{W_{c\,0}} &= \left[\frac{(3/4)\,\hat{k}_0^{\,2}}{-G_r-\hat{\omega}\,G_i}\,\cos\alpha\right]^{1/4}.
+\end{align}
+Note that $\alpha$ and $W_c/W_{c\,0}$ are both functions of $\hat{L}=L/l_e$ and $\hat{\omega}=\omega/\nu_e$. 
 
 \section*{Acknowledgements}
 This research was directly funded by the U.S.\ Department of Energy, Office of Science, Office of Fusion Energy Sciences, under  contract DE-SC0021156. 
@@ -598,14 +791,19 @@ The digital data used in the figures in this paper can be obtained from the auth
 
 \bibitem{fkr} H.P.~Furth,  J.~Killeen and M.N.~Rosenbluth,  Phys.\ Fluids {\bf 6}, 459 (1963).
 
+\bibitem{fitz} R.~Fitzpatrick, {\em Tearing Mode Dynamics in Tokamak Plasmas}, (IOP Publishing, Bristol UK, 2023).
+
 \bibitem{wesson} J.A.~Wesson, {\em Tokamaks}, 4th Ed. (Oxford University Press, Oxford UK, 2011.)
 
 \bibitem{ruth} P.H.~Rutherford, Phys.\ Fluids {\bf 16}, 1906 (1973).
 
-\bibitem{rf} R. Fitzpatrick, Phys.\ Plasmas {\bf 2}, 825 (1995).
+\bibitem{rf} R.~Fitzpatrick, Phys.\ Plasmas {\bf 2}, 825 (1995).
+
+\bibitem{brag} S.I.~Braginskii, Reviews of Plasma Physics {\bf 1}, 205.  (Consultants Bureau, New York NY, 1965.)
 
 \end{thebibliography}
 
+\newpage
 \begin{figure}
 \centerline{\includegraphics[width=1.0\textwidth]{Island.eps}}
 \caption{True geometry of electron energy transport across a magnetic island. Here, $\zeta= m\,\theta-n\,\phi$, where $\theta$ is a poloidal angle, and $\phi$ a
@@ -614,10 +812,7 @@ toroidal angle.  \label{fig1}}
 
 \begin{figure}
 \centerline{\includegraphics[width=1.0\textwidth]{Island1.eps}}
-\caption{Simplified geometry of electron energy transport across a magnetic island. Here, $x$ measures distance along magnetic field-lines.  \label{fig2}}
+\caption{Simplified geometry of electron energy transport across a magnetic island. Here, $x_3$ measures distance along magnetic field-lines.  \label{fig2}}
 \end{figure}
-
-
-
 
 \end{document}
