@@ -8,9 +8,19 @@
 
 \begin{document}
 
-\title{Time-Dependent Parallel Electron Energy Transport in  a Magnetized Plasma of Arbitrary Collisonality}
+\title{Time-Dependent Parallel Electron Energy Transport in  a Magnetized Plasma of Arbitrary Collisionality}
 \author{T.~Wang and R.~Fitzpatrick\,\footnote{rfitzp@utexas.edu}}
 \affiliation{Institute for Fusion Studies,  Department of Physics,  University of Texas at Austin,  Austin TX 78712, USA}
+
+\begin{abstract}
+The analysis of Hazeltine [Phys.\ Plasmas {\bf 5}, 3282 (1998)], which considers the transport of electron number density and energy parallel to the magnetic
+field in a magnetized plasma of arbitrary collisionality,  is generalized by  incorporating a model electron-ion collision operator,
+ including a self-consistent calculation of the parallel electric field, and taking time dependence into account. The resulting enhanced model is
+ used to investigate the transport of electron energy across a magnetic island chain in a tokamak plasma. A general expression for the critical
+ island width above which the electron temperature profile is flattened inside the magnetic separatrix of the island chain is derived.
+ This expression is valid at arbitrary electron collisionality, and also allows for temporal oscillation of the radial temperature gradient across the island chain. 
+ The expression is shown to asymptote to much  simpler expressions in the short mean-free-path and long mean-free-path limits. 
+ \end{abstract}
 \maketitle
 
 \section{Introduction}
@@ -443,7 +453,7 @@ in a thin boundary layer that lies on the island separatrix. See Fig.~\ref{fig1}
 $W>W_c$ then the electron temperature profile is flattened by the island chain, and the energy transport across the chain is predominately parallel to magnetic field-lines. On the other hand,  if $W<W_c$ then the electron temperature profile is unaffected by the island chain, and the energy transport across the chain is predominately perpendicular to magnetic field-lines.\cite{rf} 
 
 We wish to employ the theory developed Sects.~\ref{s2} and \ref{s3} to calculate the critical
-island width at arbitrary collisionality. (In reality, parallel electron energy transport in tokamak plasmas does not lie in the short mean-free-path regime.) We also wish to calculate the critical island width in the case
+island width at arbitrary collisionality. (In reality, parallel electron energy transport in tokamak plasmas does not lie in the short mean-free-path limit.) We also wish to calculate the critical island width in the case
 in which the energy flow across the island chain oscillates at some frequency $\omega$. 
 
 Our calculation takes place in the simplified island geometry pictured in Fig.~\ref{fig2}. Here, the separatrix boundary layer has been split into two straight boundary layers which represent the inner
@@ -455,7 +465,7 @@ Let $x_3$ measure distance along magnetic field-lines in the separatrix boundary
 \begin{equation}
 \frac{dx_3}{d\zeta} =\frac{R_0\,r_s}{n\,s_s}\,\frac{1}{|r-r_s|},
 \end{equation}
-where $s_s = (d\ln q/\ln s)_{r_s}$ is the magnetic shear at the rational surface, and $R_0$ is the plasma minor radius. Here, $\zeta=m\,\theta-n\,\phi$ is a helical angle, $\theta$ is
+where $s_s = (d\ln q/\ln r)_{r_s}$ is the magnetic shear at the rational surface, and $R_0$ is the plasma minor radius. Here, $\zeta=m\,\theta-n\,\phi$ is a helical angle, $\theta$ is
 a poloidal angle, and $\phi$ is a toroidal angle. 
  Now, on the magnetic separatrix,\cite{rf}
 \begin{equation}
@@ -552,7 +562,7 @@ Q_\perp (\hat{t},\hat{x}) &= \frac{\kappa_\perp}{\delta} \int_0^{x_3}\delta T_{e
 where $\kappa_\perp$ is the perpendicular electron thermal conductivity at the rational surface, and $\hat{\delta}=\delta/l_e$. Finally, the  electron thermal energy  (per unit toroidal distance) contained in the section of the layer is
 \begin{align}
 {\cal E}(\hat{t},\hat{x})&=\frac{1}{2}\int_0^{x_3} n_e\,\delta T_e(\hat{t},\hat{x})\,dx_3\,\delta\nonumber\\[0.5ex]
-& = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}_0}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})-\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]
+& = \frac{n_e\,\delta\,l_e\,\delta T_{e\,0}}{2\,\hat{k}_0}\left[\cos\alpha\,\cos(\hat{\omega}\,\hat{t})+\sin\alpha\,\sin(\hat{\omega}\,\hat{t})\right]
 \sin(\hat{k}_0\,\hat{x}).
 \end{align}
 
@@ -611,7 +621,7 @@ The previous equation can be rearranged to give
 \frac{\delta}{W} = \left(\frac{W_{c\,0}}{W}\right)^2,
 \end{equation}
 where\,\cite{rf}
-\begin{equation}
+\begin{equation}\label{wc0}
 \frac{W_{c\,0}}{r_s} =
 \sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel\,0}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
 \end{equation}
@@ -704,7 +714,7 @@ G_i &\simeq -\frac{\hat{\omega}\,\hat{k}_0}{\pi^{1/2}\,(1+\hat{\omega}^2)}
 Hence, Eqs.~(\ref{alpha}) and (\ref{delta}) yield
 \begin{align}\label{e135}
 \tan\alpha&\simeq \frac{\pi^{1/2}\,(4/\pi-1)\,\hat{\omega}}{\hat{k}_0},\\[0.5ex]
-\hat{\delta}^{\,2}&\simeq \frac{\hat{\kappa}_\perp}{[(4/\pi-1)^2\,\hat{\omega}^2 + \hat{k}_0^{\,2}/\pi]^{1/2}}.\label{e136}
+\hat{\delta}^{\,2}&\simeq \frac{\hat{\kappa}_\perp}{[(4/\pi-1)^2\,\hat{\omega}^2 + (\hat{k}_0/\pi^{1/2}+4/\pi-3/4)^2]^{1/2}}.\label{e136}
 \end{align}
 
 \subsubsection{Low-Frequency Limit}
@@ -724,7 +734,7 @@ where\,\cite{rf}
 Thus, we
 can identify $W_{c\,3}$ as the critical island width above which the electron temperature profile is flattened inside the island separatrix
 in the  low-frequency, long mean-free-path limit. However, we can also write
-\begin{equation}
+\begin{equation}\label{wc3}
 \frac{W_{c\,3}}{r_s} =
 \sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel\,3}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
 \end{equation}
@@ -770,10 +780,54 @@ Clearly, $W_c$ is the lesser of $W_{c\,3}$ and $W_{c\,4}$.
 In the general case, in which we make no assumptions regarding the mean-free-path and the frequency, it is easily demonstrated that
 \begin{align}
 \tan\alpha& = \frac{\hat{\omega}/2 -\hat{\omega}\,G_r + G_i}{-G_r-\hat{\omega}\,G_i},\\[0.5ex]
-\frac{W_c}{W_{c\,0}} &= \left[\frac{(3/4)\,\hat{k}_0^{\,2}}{-G_r-\hat{\omega}\,G_i}\,\cos\alpha\right]^{1/4}.
+\frac{W_c}{W_{c\,0}} &= \left[\frac{(3/4)\,\hat{k}_0^{\,2}}{-G_r-\hat{\omega}\,G_i}\,\cos\alpha\right]^{1/4}.\label{e149}
 \end{align}
 Note that $\alpha$ and $W_c/W_{c\,0}$ are both functions of $\hat{L}=L/l_e$ and $\hat{\omega}=\omega/\nu_e$. 
 
+\subsection{Results}
+Figure~\ref{fig3} shows the critical radial width, $W_c$,  above which a magnetic island flattens the electron temperature profile plotted
+as a function of the ratio of the connection length to the electron mean-free-path, $\hat{L}$,  in a steady-state (i.e., $\omega=0$). The critical
+island width is normalized with respect to the zero-frequency short mean-free-path critical width, $W_{c\,0}$, which is defined in
+Eq.~(\ref{wc0}). Also shown is the zero-frequency long mean-free-path critical island width, $W_{c\,3}$, which is defined in Eq.~(\ref{wc3}). 
+It can be seen that $W_c$ asymptotes to $W_{c\,0}$ in the short mean-free-path limit, $\hat{L}\gg 1$, and asymptotes to $W_{c\,3}$ in
+the long mean-free-path limit, $\hat{L}\ll 1$.
+
+Figure~\ref{fig4} shows the phase-lag, $\alpha$, and the normalized critical island width, $W_c/W_{c\,0}$, plotted as functions of
+the normalized oscillation frequency, $\hat{\omega}$, and the normalized connection length, $\hat{L}$, in the short mean-free-path
+limit, $\hat{L}\gg 1$. Also shown are the short mean-free-path expressions for the phase-lag [see Eq.~(\ref{al})], 
+\begin{equation}
+\tan(\alpha_{\rm smfp}) = \frac{2}{3}\,\frac{\hat{\omega}\,(1+\hat{\omega}^2)}{\hat{k}_0^{\,2}},
+\end{equation}
+and for the normalized critical island width [see Eq.~(\ref{del})], 
+\begin{equation}\label{e151}
+\frac{W_{c\,{\rm smfp}}}{W_{c\,0}} = \frac{[(3/2)\,\hat{k}_0^{\,2}]^{1/4}}{[\hat{\omega}^{\,2} + (9/4)\,\hat{k}_0^{\,4}/(1+\hat{\omega}^{\,2})^2]^{1/8}}.
+\end{equation}
+Note that $\hat{k}_0=\pi/\hat{L}\ll 1$ in the short mean-free-path limit. 
+It can be seen that $\alpha\simeq \alpha_{\rm smfp}$ and $W_c\simeq W_{c\,{\rm smfp}}$ are excellent approximations in the short mean-free-path limit. 
+
+Figure~\ref{fig5} shows the phase-lag, $\alpha$, and the normalized critical island width, $W_c/W_{c\,0}$, plotted as functions of
+the normalized oscillation frequency, $\hat{\omega}$, and the normalized connection length, $\hat{L}$, in the long mean-free-path
+limit, $\hat{L}\ll 1$. Also shown are the long mean-free-path expressions for the phase-lag [see Eq.~(\ref{e135})], 
+\begin{equation}
+\tan(\alpha_{\rm lmfp}) = \frac{\pi^{1/2}\,(4/\pi-1)\,\hat{\omega}}{\hat{k}_0}
+\end{equation}
+and for the normalized critical island width [see Eq.~(\ref{e136})], 
+\begin{equation}\label{e153}
+\frac{W_{c\,{\rm lmfp}}}{W_{c\,0}} = \frac{[(3/4)\,\hat{k}_0^{\,2}]^{1/4}}{[(4/\pi-1)^2\,\hat{\omega}^{\,2}+(\hat{k}_0/\pi^{1/2}+4/\pi-3/4)^2]^{1/8}}.
+\end{equation}
+Note that $\hat{k}_0\gg 1$ in the long mean-free-path limit. 
+It can be seen that $\alpha\simeq \alpha_{\rm lmfp}$ and $W_c\simeq W_{c\,{\rm lmfp}}$ are excellent approximations in the long mean-free-path limit. 
+
+\section{Summary and Conclusions}
+We have generalized the analysis of Hazeltine (1998), which considers the transport of electron number density and energy parallel to the magnetic
+field in a magnetized plasma of arbitrary collisionality,  by  incorporating a model electron-ion collision operator,
+ including a self-consistent calculation of the parallel electric field, and taking time dependence into account. The resulting enhanced model is
+ used to investigate the transport of electron energy across a magnetic island chain in a tokamak plasma. A general expression for the critical
+ island width above which the electron temperature profile is flattened inside the magnetic separatrix of the island chain is derived [see Eq.~(\ref{e149}).]
+ This expression is valid for arbitrary electron collisionality, and also allows for temporal oscillation of the radial temperature gradient across the island chain. 
+ The expression is shown to asymptote to much simpler expressions in the short mean-free-path limit [see Eq.~(\ref{e151})] and in the long mean-free-path limit [see
+ Eq.~(\ref{e153})]. 
+ 
 \section*{Acknowledgements}
 This research was directly funded by the U.S.\ Department of Energy, Office of Science, Office of Fusion Energy Sciences, under  contract DE-SC0021156. 
 
@@ -817,6 +871,40 @@ toroidal angle.  \label{fig1}}
 \begin{figure}
 \centerline{\includegraphics[width=1.0\textwidth]{Island1.eps}}
 \caption{Simplified geometry of electron energy transport across a magnetic island. Here, $x_3$ measures distance along magnetic field-lines.  \label{fig2}}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=1.0\textwidth]{zero.pdf}}
+\caption{ The zero-frequency critical island width for electron temperature flattening, $W_c$, plotted as a function of the ratio of the connection length to the electron
+mean-free-path, $\hat{L}$.
+Also shown is the zero-frequency short mean-free-path critical island width, $W_{c\,0}$, and the zero-frequency long mean-free-path
+critical island width, $W_{c\,3}$.\label{fig3}}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=1.0\textwidth]{smfp.pdf}}
+\caption{Top-left panel: Tangent of the phase-lag, $\alpha$, plotted as a function of the normalized oscillation frequency, $\hat{\omega}$, for  $\hat{L}=1$. Also
+shown is the tangent of the short mean-free-path phase-lag, $\alpha_{\rm smfp}$. Top-right panel: Same as top-left panel, except that
+$\tan\alpha$ is plotted as a function of the normalized 
+connection length, $\hat{L}$, for  $\hat{\omega}=1$.
+Bottom-left panel: Normalized critical island width, $W_c/W_{c\,0}$,  plotted as a function of the normalized oscillation frequency, $\hat{\omega}$, for  $\hat{L}=1$. Also
+shown is  short mean-free-path normalized island width, $W_{c\,{\rm smfp}}/W_{c\,0}$.  
+Bottom-right panel: Same as the bottom-left panel, except that $W_c/W_{c\,0}$ is plotted as a function of the normalized 
+connection length, $\hat{L}$, for  $\hat{\omega}=1$.
+  \label{fig4}}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=1.0\textwidth]{lmfp.pdf}}
+\caption{Top-left panel: Tangent of the phase-lag, $\alpha$, plotted as a function of the normalized oscillation frequency, $\hat{\omega}$, for  $\hat{L}=0.1$. Also
+shown is the tangent of the long mean-free-path phase-lag, $\alpha_{\rm lmfp}$. Top-right panel: Same as top-left panel, except that
+$\tan\alpha$ is plotted as a function of the normalized 
+connection length, $\hat{L}$, for  $\hat{\omega}=0.1$.
+Bottom-left panel: Normalized critical island width, $W_c/W_{c\,0}$,  plotted as a function of the normalized oscillation frequency, $\hat{\omega}$, for  $\hat{L}=0.1$. Also
+shown is  long mean-free-path normalized island width, $W_{c\,{\rm lmfp}}/W_{c\,0}$.  
+Bottom-right panel: Same as the bottom-left panel, except that $W_c/W_{c\,0}$ is plotted as a function of the normalized 
+connection length, $\hat{L}$, for  $\hat{\omega}=0.1$.
+  \label{fig5}}
 \end{figure}
 
 \end{document}
