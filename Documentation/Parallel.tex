@@ -9,7 +9,7 @@
 \begin{document}
 
 \title{Time-Dependent Parallel Electron Energy Transport in  a Magnetized Plasma of Arbitrary Collisionality}
-\author{T.~Wang and R.~Fitzpatrick\,\footnote{rfitzp@utexas.edu}}
+\author{T.~Wang\,\footnote{wt@utexas.edu} and R.~Fitzpatrick}
 \affiliation{Institute for Fusion Studies,  Department of Physics,  University of Texas at Austin,  Austin TX 78712, USA}
 
 \begin{abstract}
@@ -19,7 +19,9 @@ field in a magnetized plasma of arbitrary collisionality,  is generalized by  in
  used to investigate the transport of electron energy across a magnetic island chain in a tokamak plasma. A general expression for the critical
  island width above which the electron temperature profile is flattened inside the magnetic separatrix of the island chain is derived.
  This expression is valid at arbitrary electron collisionality, and also allows for temporal oscillation of the radial temperature gradient across the island chain. 
- The expression is shown to asymptote to much  simpler expressions in the short mean-free-path and long mean-free-path limits. 
+ The expression is shown to asymptote to much  simpler expressions in the short mean-free-path and long mean-free-path limits. An expression for
+ the appropriate value of the parallel electron thermal conductivity to use in magnetohydrodynamical simulation codes that represent parallel
+ electron energy transport in terms of a diffusive operator is obtained. 
  \end{abstract}
 \maketitle
 
@@ -714,7 +716,7 @@ G_i &\simeq -\frac{\hat{\omega}\,\hat{k}_0}{\pi^{1/2}\,(1+\hat{\omega}^2)}
 Hence, Eqs.~(\ref{alpha}) and (\ref{delta}) yield
 \begin{align}\label{e135}
 \tan\alpha&\simeq \frac{\pi^{1/2}\,(4/\pi-1)\,\hat{\omega}}{\hat{k}_0},\\[0.5ex]
-\hat{\delta}^{\,2}&\simeq \frac{\hat{\kappa}_\perp}{[(4/\pi-1)^2\,\hat{\omega}^2 + (\hat{k}_0/\pi^{1/2}+4/\pi-3/4)^2]^{1/2}}.\label{e136}
+\hat{\delta}^{\,2}&\simeq \frac{\hat{\kappa}_\perp}{[(4/\pi-1)^2\,\hat{\omega}^2 + (\hat{k}_0/\pi^{1/2}+4/\pi-3/2)^2]^{1/2}}.\label{e136}
 \end{align}
 
 \subsubsection{Low-Frequency Limit}
@@ -827,6 +829,28 @@ field in a magnetized plasma of arbitrary collisionality,  by  incorporating a m
  This expression is valid for arbitrary electron collisionality, and also allows for temporal oscillation of the radial temperature gradient across the island chain. 
  The expression is shown to asymptote to much simpler expressions in the short mean-free-path limit [see Eq.~(\ref{e151})] and in the long mean-free-path limit [see
  Eq.~(\ref{e153})]. 
+ 
+ Magnetohydrodynamical  codes that simulate tearing mode dynamics in tokamak plasmas invariably represent the parallel transport of electron temperature using a diffusive operator, despite the
+ fact that the transport is convective, rather than diffusive, due to the low collisionality of such plasmas. Assuming diffusive transport, the expression for the critical magnetic island width, $W_c$,  above which the electron temperature is flattened takes the well-known value\,\cite{rf}
+\begin{equation}
+  \frac{W_{c}}{r_s} =
+\sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
+\end{equation}
+However, if the  Braginskii expression for the parallel electron thermal conductivity,\cite{brag} $\kappa_\parallel$, is used in the previous expression then the corresponding value of
+$W_c$ is far too small, because tokamak plasmas are not in the short mean-free-path collisionality regime. So, what is an appropriate expression for 
+$\kappa_\parallel$? Adopting the reasonable criterion that the appropriate expression is that which yields the correct value for $W_c$, 
+ we deduce that
+\begin{equation}
+\kappa_\parallel = \frac{n_e\,v_{t\,e}\,l_e}{\hat{k}_0^{\,2}}\left|G({\rm i}/\hat{k}_0)\right|,
+\end{equation}
+where
+\begin{align}
+\hat{k}_0 & = \frac{\pi\,l_e}{L},\\[0.5ex]
+L &= \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi^2}{W_c}.
+\end{align}
+(Here, we are assuming that the oscillation frequency, $\omega$, is zero.)
+The previous four equations can be solved iteratively to determine $\kappa_\parallel$. All quantities are as defined  previously. 
+
  
 \section*{Acknowledgements}
 This research was directly funded by the U.S.\ Department of Energy, Office of Science, Office of Fusion Energy Sciences, under  contract DE-SC0021156. 
