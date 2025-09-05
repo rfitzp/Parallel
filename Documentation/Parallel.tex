@@ -20,7 +20,7 @@ field in a magnetized plasma of arbitrary collisionality,  is generalized by  in
  island width above which the electron temperature profile is flattened inside the magnetic separatrix of the island chain is derived.
  This expression is valid at arbitrary electron collisionality, and also allows for temporal oscillation of the radial temperature gradient across the island chain. 
  The expression is shown to asymptote to much  simpler expressions in the short mean-free-path and long mean-free-path limits. An expression for
- the appropriate value of the parallel electron thermal conductivity to use in magnetohydrodynamical simulation codes that represent parallel
+ the appropriate value of the parallel electron thermal conductivity to use in extended magnetohydrodynamical simulation codes that represent parallel
  electron energy transport in terms of a diffusive operator is obtained. 
  \end{abstract}
 \maketitle
@@ -230,15 +230,15 @@ and
 is the Deybe length.\cite{rf0} Note that $\hat{\lambda}_D$ is necessarily a small parameter in a weakly-coupled plasma.\cite{rf0}
 
 \subsection{Fluid Equations}
-Taking $\int_{-\infty}^\infty (\ref{e37a})\,du$, we obtain the electron continuity equation,
+Taking $\int_{-\infty}^\infty [{\rm Eq.}\,(\ref{e37a})]\,du$, we obtain the electron continuity equation,
 \begin{equation}\label{econt}
 \frac{\partial\delta\hat{n}_e}{\partial\hat{t}}+\frac{\partial\hat{V}_e}{\partial\hat{x}} = \hat{S}_0.
 \end{equation}
-Taking $\int_{-\infty}^\infty u\,(\ref{e37a})\,du$, we obtain the electron momentum conservation equation, 
+Taking $\int_{-\infty}^\infty u\,[{\rm Eq.}\,(\ref{e37a})]\,du$, we obtain the electron momentum conservation equation, 
 \begin{equation}\label{eforce}
 \frac{\partial\hat{V}_e}{\partial\hat{t}}+\frac{1}{2}\,\frac{\partial}{\partial\hat{x}}(\delta\hat{n}_e+\delta\hat{T}_e) + (1-\mu_e)\,\hat{V}_e = \hat{S}_1.
 \end{equation}
-Finally, taking $2\,\int_{-\infty}^\infty (u^2-1/2)\,(\ref{e37a})\,du$, we obtain
+Finally, taking $2\int_{-\infty}^\infty (u^2-1/2)\,[{\rm Eq.}\,(\ref{e37a})]\,du$, we obtain
  the electron  energy conservation equation,
 \begin{equation}\label{eenergy}
 \frac{\partial\delta T_e}{\partial\hat{t}} +2\,\frac{\partial}{\partial\hat{x}}(\hat{V}_e+\hat{q}_e)= \hat{S}_2.
@@ -264,11 +264,11 @@ resulting equations, then we obtain
 Here, we are assuming that all perturbed quantities are zero for $\hat{t}<0$. 
 
 \subsection{Fourier-Laplace Transformed Fluid Equations}
-Taking $\int_{-\infty}^\infty (\ref{e55x})\,du$, we obtain the Fourier-Laplace transformed electron continuity equation,
+Taking $\int_{-\infty}^\infty [{\rm Eq}.\,(\ref{e55x})]\,du$, we obtain the Fourier-Laplace transformed electron continuity equation,
 \begin{equation}\label{e34}
 g\,\delta\bar{n}_e+{\rm i}\,\hat{k}\,\bar{V}_e =\bar{S}_0.
 \end{equation}
-Taking $\int_{-\infty}^\infty u\,(\ref{e55x})\,du$, we obtain the Fourier-Laplace transformed electron momentum conservation equation,
+Taking $\int_{-\infty}^\infty u\,[{\rm Eq}.\,(\ref{e55x})]\,du$, we obtain the Fourier-Laplace transformed electron momentum conservation equation,
 \begin{equation}\label{e35}
 (g+1-\mu_e)\,\bar{V}_e +\frac{{\rm i}\,\hat{k}}{2}\left({\mit\Lambda}_D\,\delta\bar{n}_e+\delta\bar{T}_e\right)=0,
 \end{equation}
@@ -276,7 +276,7 @@ where
 \begin{equation}
 {\mit\Lambda}_D (\hat{k})= \frac{1+(\hat{k}\,\hat{\lambda}_D)^2}{(\hat{k}\,\hat{\lambda}_D)^2}= \frac{1+(k\,\lambda_D)^2}{(k\,\lambda_D)^2}.
 \end{equation}
-Finally, taking $2\int_{-\infty}^\infty(u^2-1/2)\,(\ref{e55x})\,du$, we obtain the Fourier-Laplace transformed electron energy conservation equation,
+Finally, taking $2\int_{-\infty}^\infty(u^2-1/2)\,[{\rm Eq}.\,(\ref{e55x})]\,du$, we obtain the Fourier-Laplace transformed electron energy conservation equation,
 \begin{equation}\label{e36}
 g\,\delta\bar{T}_e+ 2\,{\rm i}\,\hat{k}\,(\bar{V}_e+\bar{q}_e) =\bar{S}_2.
 \end{equation}
@@ -702,7 +702,7 @@ Clearly, $W_c$ is the lesser of $W_{c\,1}$ and $W_{c\,2}$.
 Consider the long mean-free-path limit 
  $|\xi|\ll 1$, which implies that
 \begin{equation}
-L\ll \frac{l_e}{(1+\omega^2/\nu_e^{\,2})^{1/2}},
+L\ll \frac{l_e}{(1+\omega^2/\nu_e^{\,2})^{1/2}}.
 \end{equation}
 According to Eq.~(\ref{lmfp}), in the limit $|\xi|\ll 1$, 
 \begin{equation}
@@ -711,7 +711,7 @@ G(\xi) \simeq -\frac{{\rm i}}{\pi^{1/2}\,\xi} + \frac{3}{2}-\frac{4}{\pi},
 which gives
 \begin{align}
 G_r&\simeq -\frac{\hat{k}_0}{\pi^{1/2}\,(1+\hat{\omega}^2)}+\frac{3}{2}-\frac{4}{\pi},\\[0.5ex]
-G_i &\simeq -\frac{\hat{\omega}\,\hat{k}_0}{\pi^{1/2}\,(1+\hat{\omega}^2)}
+G_i &\simeq -\frac{\hat{\omega}\,\hat{k}_0}{\pi^{1/2}\,(1+\hat{\omega}^2)}.
 \end{align}
 Hence, Eqs.~(\ref{alpha}) and (\ref{delta}) yield
 \begin{align}\label{e135}
@@ -830,27 +830,30 @@ field in a magnetized plasma of arbitrary collisionality,  by  incorporating a m
  The expression is shown to asymptote to much simpler expressions in the short mean-free-path limit [see Eq.~(\ref{e151})] and in the long mean-free-path limit [see
  Eq.~(\ref{e153})]. 
  
- Magnetohydrodynamical  codes that simulate tearing mode dynamics in tokamak plasmas invariably represent the parallel transport of electron temperature using a diffusive operator, despite the
+ Extended magnetohydrodynamical  (MHD) codes that simulate tearing mode dynamics in tokamak plasmas invariably represent the parallel transport of electron temperature using a diffusive operator, despite the
  fact that the transport is convective, rather than diffusive, due to the low collisionality of such plasmas. Assuming diffusive transport, the expression for the critical magnetic island width, $W_c$,  above which the electron temperature is flattened takes the well-known value\,\cite{rf}
-\begin{equation}
+\begin{equation}\label{e1w}
   \frac{W_{c}}{r_s} =
 \sqrt{2\pi}\left(\frac{\kappa_\perp}{\kappa_{\parallel}}\right)^{1/4}\,\frac{1}{(n\,s_s\,\epsilon_s)^{1/2}},
 \end{equation}
 However, if the  Braginskii expression for the parallel electron thermal conductivity,\cite{brag} $\kappa_\parallel$, is used in the previous expression then the corresponding value of
 $W_c$ is far too small, because tokamak plasmas are not in the short mean-free-path collisionality regime. So, what is an appropriate expression for 
 $\kappa_\parallel$? Adopting the reasonable criterion that the appropriate expression is that which yields the correct value for $W_c$, 
- we deduce that
+ we deduce that if 
+ \begin{align}
+ x &= \frac{W_c}{r_s},\\[0.5ex]
+ \alpha &=\frac{n\,s_s\,l_e}{2\pi\,R_0},\\[0.5ex]
+ \beta &= \frac{2\pi\,\alpha}{n\,\epsilon_s\,s_s}\left(\frac{\kappa_\perp}{n_e\,v_{t\,e}\,l_e}\right)^{1/2},
+ \end{align}
+ then 
 \begin{equation}
-\kappa_\parallel = \frac{n_e\,v_{t\,e}\,l_e}{\hat{k}_0^{\,2}}\left|G({\rm i}/\hat{k}_0)\right|,
+\frac{\kappa_\parallel}{n_e\,v_{t\,e}\,l_e}= \frac{\beta^{\,2}}{\alpha^{\,2}\,x^{\,4}},
 \end{equation}
-where
-\begin{align}
-\hat{k}_0 & = \frac{\pi\,l_e}{L},\\[0.5ex]
-L &= \frac{R_0\,r_s}{n\,s_s}\,\frac{2\pi^2}{W_c}.
-\end{align}
-(Here, we are assuming that the oscillation frequency, $\omega$, is zero.)
-The previous four equations can be solved iteratively to determine $\kappa_\parallel$. All quantities are as defined  previously. 
-
+where the  value of $x$ is determined from the solution of the transcendental equation
+\begin{equation}
+x = \beta\left|G\left(\frac{\rm i}{\alpha\,x}\right)\right|^{-1/2}.
+\end{equation}
+(Here, we are assuming that the oscillation frequency, $\omega$, is zero. Note that $x$, $\alpha$, and $\beta$ are all dimensionless. )
  
 \section*{Acknowledgements}
 This research was directly funded by the U.S.\ Department of Energy, Office of Science, Office of Fusion Energy Sciences, under  contract DE-SC0021156. 
@@ -899,10 +902,8 @@ toroidal angle.  \label{fig1}}
 
 \begin{figure}
 \centerline{\includegraphics[width=1.0\textwidth]{zero.pdf}}
-\caption{ The zero-frequency critical island width for electron temperature flattening, $W_c$, plotted as a function of the ratio of the connection length to the electron
-mean-free-path, $\hat{L}$.
-Also shown is the zero-frequency short mean-free-path critical island width, $W_{c\,0}$, and the zero-frequency long mean-free-path
-critical island width, $W_{c\,3}$.\label{fig3}}
+\caption{ Zero-frequency critical island width, $W_c$,  for electron temperature flattening, plotted as a function of the ratio of connection length to electron mean-free-path, $\hat{L}$. Also shown are the short and long mean-free-path limits, $W_{c\,0}$ and $W_{c\,3}$. Observe that $W_c\rightarrow  W_{c\,0}$ for $\hat{L}\gg 1$,   and $W_c\rightarrow W_{c\,3}$ for $\hat{L}\ll 1$. 
+\label{fig3}}
 \end{figure}
 
 \begin{figure}

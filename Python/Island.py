@@ -296,7 +296,7 @@ plt.subplot (2, 2, 2)
 plt.xlim (L_min, L_max)
  
 plt.plot    (LL, yy3, color = 'blue',  linewidth = 2,  linestyle = 'solid',  label = r'$\tan(\alpha)$')
-plt.plot    (LL, yy4, color = 'red',   linewidth = 2,  linestyle = 'dashed', label = r'$\tan(\alpha_{smfp})$')
+plt.plot    (LL, yy4, color = 'red',   linewidth = 2,  linestyle = 'dashed', label = r'$\tan(\alpha_{lmfp})$')
 plt.axhline (0.,      color = 'black', linewidth = 1., linestyle = 'dotted')
 
 plt.xlabel (r'$\hat{L}$',fontsize = font)
